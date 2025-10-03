@@ -10,8 +10,9 @@ module.exports = {
     'eslint:recommended'
   ],
   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module'
+    ecmaVersion: 2022,
+    sourceType: 'module',
+    requireConfigFile: false
   },
   globals: {
     defineProps: 'readonly',
@@ -19,5 +20,27 @@ module.exports = {
     defineExpose: 'readonly',
     withDefaults: 'readonly'
   },
-  rules: {}
+  rules: {
+    // 忽略未使用的變數警告（開發階段常見）
+    'no-unused-vars': 'warn',
+    // 允許 console 語句
+    'no-console': 'warn'
+  },
+  overrides: [
+    {
+      files: ['*.vue'],
+      parser: 'vue-eslint-parser',
+      parserOptions: {
+        ecmaVersion: 2022,
+        sourceType: 'module'
+      }
+    },
+    {
+      files: ['*.js', '*.mjs'],
+      parserOptions: {
+        ecmaVersion: 2022,
+        sourceType: 'module'
+      }
+    }
+  ]
 }
