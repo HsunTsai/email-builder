@@ -78,7 +78,6 @@ import {
   AvatarPropsDefaults,
   AvatarPropsSchema,
 } from "@flyhub/email-block-avatar";
-import { ref, computed } from "vue";
 import * as Zod from "zod";
 
 type AvatarSidebarPanelProps = {

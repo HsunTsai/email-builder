@@ -14,8 +14,6 @@
 import { EDITOR_DICTIONARY } from "./core";
 import { BuildBlockComponent } from "@flyhub/email-document-core";
 import { useInspectorDrawer } from "./editor.store";
-import type { InjectionKey } from "vue";
-import { computed, provide } from "vue";
 
 export const currentBlockIdSymbol = Symbol(
   "currentBlockId",

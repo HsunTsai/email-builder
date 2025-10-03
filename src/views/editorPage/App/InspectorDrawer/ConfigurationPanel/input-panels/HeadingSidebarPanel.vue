@@ -54,7 +54,6 @@ import {
   HeadingPropsSchema,
   HeadingPropsDefaults,
 } from "@flyhub/email-block-heading";
-import { ref } from "vue";
 
 type HeadingSidebarPanelProps = {
   data: HeadingProps;

@@ -77,7 +77,6 @@
 <script setup lang="ts">
 import type { TEditorBlock } from "../../../documents/editor/core";
 import { useInspectorDrawer } from "../../../documents/editor/editor.store";
-import { computed } from "vue";
 import AvatarSidebarPanel from "./input-panels/AvatarSidebarPanel.vue";
 import ButtonSidebarPanel from "./input-panels/ButtonSidebarPanel.vue";
 import ColumnsContainerSidebarPanel from "./input-panels/ColumnsContainerSidebarPanel.vue";

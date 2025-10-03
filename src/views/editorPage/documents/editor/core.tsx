@@ -1,4 +1,3 @@
-import { h } from "vue";
 import { z } from "zod";
 
 import Heading, { HeadingPropsSchema } from "@flyhub/email-block-heading";
@@ -27,44 +26,68 @@ export const EDITOR_DICTIONARY = buildBlockConfigurationDictionary({
   Avatar: {
     schema: AvatarPropsSchema,
     Component: (props: { [x: string]: any }) =>
-      h(EditorBlockWrapper, {}, {
-        default: () => h(Avatar, props)
-      }) as any,
+      h(
+        EditorBlockWrapper,
+        {},
+        {
+          default: () => h(Avatar, props),
+        },
+      ) as any,
   },
   Button: {
     schema: ButtonPropsSchema,
     Component: (props: { [x: string]: any }) =>
-      h(EditorBlockWrapper, {}, {
-        default: () => h(Button, props)
-      }) as any,
+      h(
+        EditorBlockWrapper,
+        {},
+        {
+          default: () => h(Button, props),
+        },
+      ) as any,
   },
   Container: {
     schema: ContainerPropsSchema as any,
     Component: (props: { [x: string]: any }) =>
-      h(EditorBlockWrapper, {}, {
-        default: () => h(ContainerEditor, props)
-      }) as any,
+      h(
+        EditorBlockWrapper,
+        {},
+        {
+          default: () => h(ContainerEditor, props),
+        },
+      ) as any,
   },
   ColumnsContainer: {
     schema: ColumnsContainerPropsSchema as any,
     Component: (props: { [x: string]: any }) =>
-      h(EditorBlockWrapper, {}, {
-        default: () => h(ColumnsContainerEditor, props)
-      }) as any,
+      h(
+        EditorBlockWrapper,
+        {},
+        {
+          default: () => h(ColumnsContainerEditor, props),
+        },
+      ) as any,
   },
   Heading: {
     schema: HeadingPropsSchema,
     Component: (props: { [x: string]: any }) =>
-      h(EditorBlockWrapper, {}, {
-        default: () => h(Heading, props)
-      }) as any,
+      h(
+        EditorBlockWrapper,
+        {},
+        {
+          default: () => h(Heading, props),
+        },
+      ) as any,
   },
   Html: {
     schema: HtmlPropsSchema,
     Component: (props: { [x: string]: any }) =>
-      h(EditorBlockWrapper, {}, {
-        default: () => h(Html, props)
-      }) as any,
+      h(
+        EditorBlockWrapper,
+        {},
+        {
+          default: () => h(Html, props),
+        },
+      ) as any,
   },
   Image: {
     schema: ImagePropsSchema,
@@ -78,17 +101,25 @@ export const EDITOR_DICTIONARY = buildBlockConfigurationDictionary({
             "https://placehold.co/600x400@2x/F8F8F8/CCC?text=Your%20image",
         },
       };
-      return h(EditorBlockWrapper, {}, {
-        default: () => h(Image, props)
-      }) as any;
+      return h(
+        EditorBlockWrapper,
+        {},
+        {
+          default: () => h(Image, props),
+        },
+      ) as any;
     },
   },
   Text: {
     schema: TextPropsSchema,
     Component: (props: { [x: string]: any }) =>
-      h(EditorBlockWrapper, {}, {
-        default: () => h(Text, props)
-      }) as any,
+      h(
+        EditorBlockWrapper,
+        {},
+        {
+          default: () => h(Text, props),
+        },
+      ) as any,
   },
   EmailLayout: {
     schema: EmailLayoutPropsSchema as any,
@@ -97,22 +128,33 @@ export const EDITOR_DICTIONARY = buildBlockConfigurationDictionary({
   Spacer: {
     schema: SpacerPropsSchema,
     Component: (props: { [x: string]: any }) =>
-      h(EditorBlockWrapper, {}, {
-        default: () => h(Spacer, props)
-      }) as any,
+      h(
+        EditorBlockWrapper,
+        {},
+        {
+          default: () => h(Spacer, props),
+        },
+      ) as any,
   },
   Divider: {
     schema: DividerPropsSchema,
     Component: (props: { [x: string]: any }) =>
-      h(EditorBlockWrapper, {}, {
-        default: () => h(Divider, props)
-      }) as any,
+      h(
+        EditorBlockWrapper,
+        {},
+        {
+          default: () => h(Divider, props),
+        },
+      ) as any,
   },
 }) as any;
 
 export const EditorBlockSchema =
   buildBlockConfigurationSchema(EDITOR_DICTIONARY);
-export const EditorConfigurationSchema = z.record(z.string(), EditorBlockSchema);
+export const EditorConfigurationSchema = z.record(
+  z.string(),
+  EditorBlockSchema,
+);
 
 export type TEditorBlock = z.infer<typeof EditorBlockSchema>;
 export type TEditorConfiguration = Record<string, TEditorBlock>;

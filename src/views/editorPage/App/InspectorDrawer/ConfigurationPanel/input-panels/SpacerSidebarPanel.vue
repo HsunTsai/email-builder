@@ -23,7 +23,6 @@ import {
   SpacerPropsSchema,
   SpacerPropsDefaults,
 } from "@flyhub/email-block-spacer";
-import { ref } from "vue";
 
 type SpacerSidebarPanelProps = {
   data: SpacerProps;

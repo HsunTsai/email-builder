@@ -50,7 +50,6 @@
 
 <script setup lang="ts">
 import { Popover, PopoverButton, PopoverPanel } from "@headlessui/vue";
-import { ref } from "vue";
 
 type Props =
   | {

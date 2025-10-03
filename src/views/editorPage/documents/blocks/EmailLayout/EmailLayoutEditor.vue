@@ -54,7 +54,6 @@ import { getFontFamily } from "@flyhub/email-core";
 import { currentBlockIdSymbol } from "../../editor/EditorBlock.vue";
 import type { TEditorBlock } from "@flyhub/email-core";
 import EditorChildrenIds from "../helpers/EditorChildrenIds.vue";
-import { inject } from "vue";
 
 import { useInspectorDrawer } from "../../editor/editor.store";
 

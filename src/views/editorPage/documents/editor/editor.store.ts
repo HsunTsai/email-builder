@@ -1,7 +1,6 @@
 import getConfiguration from "../../getConfiguration";
 import type { TEditorConfiguration } from "./core";
 import { defineStore } from "pinia";
-import { ref } from "vue";
 
 type TValue = {
   document: TEditorConfiguration;

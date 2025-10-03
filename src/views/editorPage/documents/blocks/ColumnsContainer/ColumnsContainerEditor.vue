@@ -29,7 +29,6 @@ import { currentBlockIdSymbol } from "../../editor/EditorBlock.vue";
 import { useInspectorDrawer } from "../../editor/editor.store";
 import type { EditorChildrenChange } from "../helpers/EditorChildrenIds.vue";
 import EditorChildrenIds from "../helpers/EditorChildrenIds.vue";
-import { computed, inject } from "vue";
 
 const props = defineProps<ColumnsContainerProps>();
 

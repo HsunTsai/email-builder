@@ -10,7 +10,6 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from "vue";
 import { useInspectorDrawer } from "../../../documents/editor/editor.store";
 
 const inspectorDrawer = useInspectorDrawer();

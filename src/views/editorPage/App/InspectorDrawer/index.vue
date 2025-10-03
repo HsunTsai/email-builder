@@ -54,7 +54,6 @@
 <script setup lang="ts">
 import { TabGroup, TabList, Tab, TabPanels, TabPanel } from "@headlessui/vue";
 import { useInspectorDrawer } from "../../documents/editor/editor.store";
-import { ref, watch } from "vue";
 import StylesPanel from "./StylesPanel.vue";
 import ConfigurationPanel from "./ConfigurationPanel/index.vue";
 

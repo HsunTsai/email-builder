@@ -43,7 +43,6 @@ import ColorInput from "./helpers/inputs/ColorInput/ColorInput.vue";
 import SliderInput from "./helpers/inputs/SliderInput.vue";
 import BaseSidebarPanel from "./helpers/BaseSidebarPanel.vue";
 import MultiStylePropertyPanel from "./helpers/style-inputs/MultiStylePropertyPanel.vue";
-import { computed, ref } from "vue";
 
 type DividerSidebarPanelProps = {
   data: DividerProps;

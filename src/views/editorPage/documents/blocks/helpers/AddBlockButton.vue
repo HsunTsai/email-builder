@@ -24,7 +24,6 @@ import type { TEditorBlock } from "../../editor/core";
 import PlaceholderButton from "./PlaceholderButton.vue";
 import DividerButton from "./DividerButton.vue";
 import BlocksMenu from "./BlocksMenu.vue";
-import { ref, computed } from "vue";
 
 const props = defineProps<{
   placeholder?: boolean;

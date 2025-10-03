@@ -1,6 +1,7 @@
 import { defineConfig, loadEnv } from "vite";
 import vue from "@vitejs/plugin-vue";
 import vueJsx from "@vitejs/plugin-vue-jsx";
+import AutoImport from "unplugin-auto-import/vite";
 import { fileURLToPath, URL } from "node:url";
 
 // https://vitejs.dev/config/
@@ -15,6 +16,13 @@ export default defineConfig(({ mode }) => {
       vueJsx({
         // Enable React JSX for .tsx files
         include: /\.(jsx|tsx)$/,
+      }),
+      AutoImport({
+        imports: ["vue"],
+        dts: true, // 生成類型聲明文件
+        eslintrc: {
+          enabled: true, // 生成 ESLint 配置
+        },
       }),
     ],
     base: env.VITE_BASE_URL || "/",

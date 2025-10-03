@@ -106,7 +106,6 @@ import RadioGroupInput from "./helpers/inputs/RadioGroupInput.vue";
 import TextDimensionInput from "./helpers/inputs/TextDimensionInput.vue";
 import type { ImageProps } from "@flyhub/email-block-image";
 import { ImagePropsSchema } from "@flyhub/email-block-image";
-import { ref } from "vue";
 
 type ImageSidebarPanelProps = {
   data: ImageProps;

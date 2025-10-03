@@ -36,7 +36,6 @@ import { Popover, PopoverButton, PopoverPanel } from "@headlessui/vue";
 import type { TEditorBlock } from "../../editor/core";
 import { BUTTONS } from "./buttons";
 import BlockButton from "./BlockButton.vue";
-import { ref, watch } from "vue";
 
 const open = ref(false);
 

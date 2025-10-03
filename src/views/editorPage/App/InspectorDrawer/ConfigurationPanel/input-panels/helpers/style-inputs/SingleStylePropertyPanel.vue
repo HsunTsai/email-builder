@@ -68,7 +68,6 @@ import FontWeightInput from "../inputs/FontWeightInput.vue";
 import TextAlignInput from "../inputs/TextAlignInput.vue";
 import PaddingInput from "../inputs/PaddingInput.vue";
 import SliderInput from "../inputs/SliderInput.vue";
-import { computed } from "vue";
 
 type StylePropertyPanelProps = {
   name: keyof TStyle;

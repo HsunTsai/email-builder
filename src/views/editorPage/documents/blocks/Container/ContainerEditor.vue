@@ -14,7 +14,6 @@ import type { EditorChildrenChange } from "../helpers/EditorChildrenIds.vue";
 import type { ContainerProps } from "./ContainerPropsSchema";
 import { currentBlockIdSymbol } from "../../editor/EditorBlock.vue";
 import { useInspectorDrawer } from "../../editor/editor.store";
-import { inject } from "vue";
 
 defineProps<ContainerProps>();
 

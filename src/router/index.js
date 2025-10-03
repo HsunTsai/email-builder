@@ -1,8 +1,9 @@
-import { createRouter, createWebHistory } from "vue-router";
 import HomePage from "../views/HomePage.vue";
 // import EditorPage from '../views/EditorPage.vue'
 import EditorPage from "../views/editorPage/EditorPage.vue";
 import TemplatesPage from "../views/TemplatesPage.vue";
+import { createRouter } from "vue-router";
+import { createWebHistory } from "vue-router";
 
 // 從環境變數獲取 base URL
 const baseUrl = import.meta.env.VITE_BASE_URL || "/";

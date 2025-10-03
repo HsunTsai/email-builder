@@ -8,6 +8,7 @@ module.exports = {
   extends: [
     "plugin:vue/vue3-essential",
     "eslint:recommended",
+    "./.eslintrc-auto-import.json",
   ],
   parserOptions: {
     ecmaVersion: 2022,
@@ -45,9 +46,7 @@ module.exports = {
       files: ["*.ts", "*.tsx"],
       parser: "@typescript-eslint/parser",
       plugins: ["@typescript-eslint"],
-      extends: [
-        "plugin:@typescript-eslint/recommended",
-      ],
+      extends: ["plugin:@typescript-eslint/recommended"],
       parserOptions: {
         ecmaVersion: 2022,
         sourceType: "module",
@@ -78,9 +77,7 @@ module.exports = {
         },
       },
       plugins: ["@typescript-eslint"],
-      extends: [
-        "plugin:@typescript-eslint/recommended",
-      ],
+      extends: ["plugin:@typescript-eslint/recommended"],
       rules: {
         "@typescript-eslint/no-unused-vars": "warn",
         "@typescript-eslint/no-explicit-any": "warn",

@@ -123,7 +123,6 @@ import {
   ButtonPropsSchema,
   ButtonPropsDefaults,
 } from "@flyhub/email-block-button";
-import { computed, ref } from "vue";
 
 type ButtonSidebarPanelProps = {
   data: ButtonProps;

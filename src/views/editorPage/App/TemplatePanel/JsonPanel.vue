@@ -5,7 +5,6 @@
 <script setup lang="ts">
 import HighlightedCodePanel from "./helper/HighlightedCodePanel.vue";
 import { useInspectorDrawer } from "../../documents/editor/editor.store";
-import { ref, watch } from "vue";
 
 const inspectorDrawer = useInspectorDrawer();
 

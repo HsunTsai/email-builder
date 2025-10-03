@@ -108,7 +108,6 @@
 <script setup lang="ts">
 import { TabGroup, TabList, Tab, TabPanels, TabPanel } from "@headlessui/vue";
 import EditorBlock from "../../documents/editor/EditorBlock.vue";
-import { computed } from "vue";
 import HtmlPanel from "./HtmlPanel.vue";
 import JsonPanel from "./JsonPanel.vue";
 import ImportJson from "./ImportJson/index.vue";

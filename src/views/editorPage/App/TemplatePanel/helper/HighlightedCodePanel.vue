@@ -9,7 +9,6 @@
 </template>
 
 <script setup lang="ts">
-import { ref, watch } from "vue";
 import { html, json } from "./highlighters";
 
 type Props = {

@@ -11,7 +11,6 @@
 
 <script setup lang="ts">
 import RawSliderInput from "./raw/RawSliderInput.vue";
-import { computed, ref } from "vue";
 
 type Props = {
   label: string;

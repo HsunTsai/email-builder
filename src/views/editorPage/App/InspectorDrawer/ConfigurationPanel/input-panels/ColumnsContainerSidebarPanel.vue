@@ -71,7 +71,6 @@ import type { ColumnsContainerProps } from "../../../../documents/blocks/Columns
 import ColumnsContainerPropsSchema from "../../../../documents/blocks/ColumnsContainer/ColumnsContainerPropsSchema";
 import SliderInput from "./helpers/inputs/SliderInput.vue";
 import MultiStylePropertyPanel from "./helpers/style-inputs/MultiStylePropertyPanel.vue";
-import { ref } from "vue";
 
 type ColumnsContainerSidebarPanelProps = {
   data: ColumnsContainerProps;

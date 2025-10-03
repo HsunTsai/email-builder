@@ -69,7 +69,6 @@ import {
 } from "@headlessui/vue";
 import { CheckIcon, ChevronUpDownIcon } from "@heroicons/vue/20/solid";
 import { FONT_FAMILIES } from "@flyhub/email-core";
-import { ref, computed } from "vue";
 
 const props = defineProps<{
   label: string;

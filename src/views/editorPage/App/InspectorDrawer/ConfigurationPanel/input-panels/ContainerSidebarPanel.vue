@@ -13,7 +13,6 @@ import ContainerPropsSchema from "../../../../documents/blocks/Container/Contain
 import type { ContainerProps } from "../../../../documents/blocks/Container/ContainerPropsSchema";
 import MultiStylePropertyPanel from "./helpers/style-inputs/MultiStylePropertyPanel.vue";
 import BaseSidebarPanel from "./helpers/BaseSidebarPanel.vue";
-import { ref } from "vue";
 
 type ContainerSidebarPanelProps = {
   data: ContainerProps;

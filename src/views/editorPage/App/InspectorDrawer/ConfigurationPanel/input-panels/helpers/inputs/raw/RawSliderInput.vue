@@ -10,7 +10,7 @@
       @input="
         emit(
           'update:model-value',
-          Number(($event.target as HTMLInputElement).value)
+          Number(($event.target as HTMLInputElement).value),
         )
       "
       class="flex-1 mx-4"

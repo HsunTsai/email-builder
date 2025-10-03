@@ -22,7 +22,6 @@
 import { currentBlockIdSymbol } from "../../../editor/EditorBlock.vue";
 import TuneMenu from "./TuneMenu.vue";
 import { useInspectorDrawer } from "../../../editor/editor.store";
-import { computed, inject, ref } from "vue";
 
 const inspectorDrawer = useInspectorDrawer();
 

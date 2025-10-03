@@ -12,7 +12,6 @@
 
 <script setup lang="ts">
 import TextDimensionInput from "./TextDimensionInput.vue";
-import { computed } from "vue";
 
 type TWidthValue = number | null | undefined;
 type FixedWidths = [TWidthValue, TWidthValue, TWidthValue];

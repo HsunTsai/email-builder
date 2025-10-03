@@ -38,7 +38,6 @@ import BaseSidebarPanel from "./helpers/BaseSidebarPanel.vue";
 import MultiStylePropertyPanel from "./helpers/style-inputs/MultiStylePropertyPanel.vue";
 import type { HtmlProps } from "@flyhub/email-block-html";
 import { HtmlPropsSchema } from "@flyhub/email-block-html";
-import { ref } from "vue";
 
 type HtmlSidebarPanelProps = {
   data: HtmlProps;
