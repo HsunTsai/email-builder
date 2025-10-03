@@ -5,7 +5,15 @@
       <textarea
         rows="3"
         :value="data.props?.text ?? HeadingPropsDefaults.text"
-        @input="handleUpdateData({ ...data, props: { ...data.props, text: ($event.target as HTMLTextAreaElement).value } })"
+        @input="
+          handleUpdateData({
+            ...data,
+            props: {
+              ...data.props,
+              text: ($event.target as HTMLTextAreaElement).value,
+            },
+          })
+        "
         class="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:border-blue-500 focus:ring-blue-500 resize-none"
         placeholder="Enter heading text..."
       />
@@ -13,11 +21,24 @@
     <RadioGroupInput
       label="Level"
       :model-value="data.props?.level ?? HeadingPropsDefaults.level"
-      :items="[{ label: 'H1', value: 'h1' }, { label: 'H2', value: 'h2' }, { label: 'H3', value: 'h3' }]"
-      @update:model-value="handleUpdateData({ ...data, props: { ...data.props, level: $event } })"
+      :items="[
+        { label: 'H1', value: 'h1' },
+        { label: 'H2', value: 'h2' },
+        { label: 'H3', value: 'h3' },
+      ]"
+      @update:model-value="
+        handleUpdateData({ ...data, props: { ...data.props, level: $event } })
+      "
     />
     <MultiStylePropertyPanel
-      :names="['color', 'backgroundColor', 'fontFamily', 'fontWeight', 'textAlign', 'padding']"
+      :names="[
+        'color',
+        'backgroundColor',
+        'fontFamily',
+        'fontWeight',
+        'textAlign',
+        'padding',
+      ]"
       :model-value="data.style"
       @update:model-value="handleUpdateData({ ...data, style: $event })"
     />
@@ -25,26 +46,29 @@
 </template>
 
 <script setup lang="ts">
-import BaseSidebarPanel from './helpers/BaseSidebarPanel.vue';
-import MultiStylePropertyPanel from './helpers/style-inputs/MultiStylePropertyPanel.vue';
-import RadioGroupInput from './helpers/inputs/RadioGroupInput.vue';
-import type { HeadingProps} from '@flyhub/email-block-heading';
-import { HeadingPropsSchema, HeadingPropsDefaults } from '@flyhub/email-block-heading';
-import { ref } from 'vue';
+import BaseSidebarPanel from "./helpers/BaseSidebarPanel.vue";
+import MultiStylePropertyPanel from "./helpers/style-inputs/MultiStylePropertyPanel.vue";
+import RadioGroupInput from "./helpers/inputs/RadioGroupInput.vue";
+import type { HeadingProps } from "@flyhub/email-block-heading";
+import {
+  HeadingPropsSchema,
+  HeadingPropsDefaults,
+} from "@flyhub/email-block-heading";
+import { ref } from "vue";
 
 type HeadingSidebarPanelProps = {
-  data: HeadingProps
-}
+  data: HeadingProps;
+};
 
-defineProps<HeadingSidebarPanelProps>()
+defineProps<HeadingSidebarPanelProps>();
 
 const emit = defineEmits<{
-  (e: 'update:data', args: HeadingProps): void
-}>()
+  (e: "update:data", args: HeadingProps): void;
+}>();
 
 /** Refs */
 
-const errors = ref<Zod.ZodError | null>(null)
+const errors = ref<Zod.ZodError | null>(null);
 
 /** Functions */
 
@@ -52,7 +76,7 @@ function handleUpdateData(data: unknown) {
   const res = HeadingPropsSchema.safeParse(data);
 
   if (res.success) {
-    emit('update:data', res.data);
+    emit("update:data", res.data);
     errors.value = null;
   } else {
     errors.value = res.error;

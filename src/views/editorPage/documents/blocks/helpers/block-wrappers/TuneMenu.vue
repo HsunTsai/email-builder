@@ -1,21 +1,21 @@
 <template>
   <div :style="sx" @click.stop>
-    <div style="display: flex; gap: 8px; flex-direction: column;">
-      <button 
+    <div style="display: flex; gap: 8px; flex-direction: column">
+      <button
         class="tune-menu-button p-2 bg-gray-100 hover:bg-gray-200 rounded-md transition-colors"
         @click="handleMoveClick('up')"
         title="Move up"
       >
         <span class="material-symbols-outlined text-xl">arrow_upward</span>
       </button>
-      <button 
+      <button
         class="tune-menu-button p-2 bg-gray-100 hover:bg-gray-200 rounded-md transition-colors"
         @click="handleMoveClick('down')"
         title="Move down"
       >
         <span class="material-symbols-outlined text-xl">arrow_downward</span>
       </button>
-      <button 
+      <button
         class="tune-menu-button p-2 bg-red-100 hover:bg-red-200 text-red-600 rounded-md transition-colors"
         @click="handleDeleteClick"
         title="Delete"
@@ -27,53 +27,54 @@
 </template>
 
 <script setup lang="ts">
-import type { HTMLAttributes } from 'vue';
-import type { ColumnsContainerProps } from '../../ColumnsContainer/ColumnsContainerPropsSchema';
-import type { TEditorBlock } from '../../../editor/core';
-import { useInspectorDrawer } from '../../../editor/editor.store';
+import type { HTMLAttributes } from "vue";
+import type { ColumnsContainerProps } from "../../ColumnsContainer/ColumnsContainerPropsSchema";
+import type { TEditorBlock } from "../../../editor/core";
+import { useInspectorDrawer } from "../../../editor/editor.store";
 
-const sx: HTMLAttributes['style'] = {
-  backgroundColor: 'white',
-  position: 'absolute',
+const sx: HTMLAttributes["style"] = {
+  backgroundColor: "white",
+  position: "absolute",
   top: 0,
-  left: '-56px',
-  borderRadius: '256px',
-  padding: '8px 4px',
+  left: "-56px",
+  borderRadius: "256px",
+  padding: "8px 4px",
   zIndex: 10,
-  boxShadow: 'rgba(33, 36, 67, 0.04) 0px 10px 20px, rgba(33, 36, 67, 0.04) 0px 2px 6px, rgba(33, 36, 67, 0.04) 0px 0px 1px',
-}
+  boxShadow:
+    "rgba(33, 36, 67, 0.04) 0px 10px 20px, rgba(33, 36, 67, 0.04) 0px 2px 6px, rgba(33, 36, 67, 0.04) 0px 0px 1px",
+};
 
-const props = defineProps<{ blockId: string }>()
+const props = defineProps<{ blockId: string }>();
 
-const inspectorDrawer = useInspectorDrawer()
+const inspectorDrawer = useInspectorDrawer();
 
 function handleDeleteClick() {
   const filterChildrenIds = (childrenIds: string[] | null | undefined) => {
-    if (!childrenIds) return childrenIds
+    if (!childrenIds) return childrenIds;
 
-    return childrenIds.filter(childId => childId !== props.blockId)
-  }
+    return childrenIds.filter((childId) => childId !== props.blockId);
+  };
 
-  const nDocument = { ...inspectorDrawer.document }
+  const nDocument = { ...inspectorDrawer.document };
 
   for (const [id, b] of Object.entries(nDocument)) {
-    const block = b as TEditorBlock
+    const block = b as TEditorBlock;
 
     if (id === props.blockId) {
-      continue
+      continue;
     }
 
     switch (block.type) {
-      case 'EmailLayout':
+      case "EmailLayout":
         nDocument[id] = {
           ...block,
           data: {
             ...block.data,
             childrenIds: filterChildrenIds(block.data.childrenIds),
           },
-        }
-        break
-      case 'Container':
+        };
+        break;
+      case "Container":
         nDocument[id] = {
           ...block,
           data: {
@@ -81,75 +82,81 @@ function handleDeleteClick() {
             props: {
               ...block.data.props,
               childrenIds: filterChildrenIds(block.data.props?.childrenIds),
-            }
+            },
           },
-        }
-        break
-      case 'ColumnsContainer':
+        };
+        break;
+      case "ColumnsContainer":
         nDocument[id] = {
-          type: 'ColumnsContainer',
+          type: "ColumnsContainer",
           data: {
             style: block.data.style,
             props: {
               ...block.data.props,
               columns: block.data.props?.columns?.map((c) => ({
                 childrenIds: filterChildrenIds(c.childrenIds),
-              }))
-            }
-          } as ColumnsContainerProps
-        }
-        break
+              })),
+            },
+          } as ColumnsContainerProps,
+        };
+        break;
       default:
-        nDocument[id] = block
+        nDocument[id] = block;
     }
   }
 
-  delete nDocument[props.blockId]
+  delete nDocument[props.blockId];
 
-  inspectorDrawer.document = nDocument
-  inspectorDrawer.selectedSidebarTab = 'styles'
-  inspectorDrawer.setSelectedBlockId(null)
+  inspectorDrawer.document = nDocument;
+  inspectorDrawer.selectedSidebarTab = "styles";
+  inspectorDrawer.setSelectedBlockId(null);
 }
 
-function handleMoveClick(direction: 'up' | 'down') {
+function handleMoveClick(direction: "up" | "down") {
   const moveChildrenIds = (ids: string[] | null | undefined) => {
-    if (!ids) return ids
+    if (!ids) return ids;
 
-    const index = ids.indexOf(props.blockId)
+    const index = ids.indexOf(props.blockId);
 
-    if (index === -1) return ids
+    if (index === -1) return ids;
 
-    const  childrenIds = [...ids]
+    const childrenIds = [...ids];
 
-    if (direction === 'up' && index > 0) {
-      [childrenIds[index], childrenIds[index - 1]] = [childrenIds[index - 1], childrenIds[index]]
-    } else if (direction === 'down' && index < childrenIds.length - 1) {
-      [childrenIds[index], childrenIds[index + 1]] = [childrenIds[index + 1], childrenIds[index]]
+    if (direction === "up" && index > 0) {
+      [childrenIds[index], childrenIds[index - 1]] = [
+        childrenIds[index - 1],
+        childrenIds[index],
+      ];
+    } else if (direction === "down" && index < childrenIds.length - 1) {
+      [childrenIds[index], childrenIds[index + 1]] = [
+        childrenIds[index + 1],
+        childrenIds[index],
+      ];
     }
 
-    return childrenIds
-  }
+    return childrenIds;
+  };
 
-  const nDocument = { ...inspectorDrawer.document }
+  const nDocument = { ...inspectorDrawer.document };
 
   for (const [id, b] of Object.entries(nDocument)) {
-    const block = b as TEditorBlock
+    const block = b as TEditorBlock;
 
     if (id === props.blockId) {
-      continue
+      continue;
     }
 
     switch (block.type) {
-      case 'EmailLayout':
+      case "EmailLayout":
         nDocument[id] = {
           ...block,
           data: {
             ...block.data,
             childrenIds: moveChildrenIds(block.data.childrenIds),
-          }
-        }
-        break
-      case 'Container':
+          },
+        };
+        break;
+      case "Container":
         nDocument[id] = {
           ...block,
           data: {
@@ -157,31 +164,31 @@ function handleMoveClick(direction: 'up' | 'down') {
             props: {
               ...block.data.props,
               childrenIds: moveChildrenIds(block.data.props?.childrenIds),
-            }
+            },
           },
-        }
-        break
-      case 'ColumnsContainer':
+        };
+        break;
+      case "ColumnsContainer":
         nDocument[id] = {
-          type: 'ColumnsContainer',
+          type: "ColumnsContainer",
           data: {
             style: block.data.style,
             props: {
               ...block.data.props,
               columns: block.data.props?.columns?.map((c) => ({
                 childrenIds: moveChildrenIds(c.childrenIds),
-              }))
-            }
-          } as ColumnsContainerProps
-        }
-        break
+              })),
+            },
+          } as ColumnsContainerProps,
+        };
+        break;
       default:
-        nDocument[id] = block
+        nDocument[id] = block;
     }
   }
 
-  inspectorDrawer.document = nDocument  
-  inspectorDrawer.setSelectedBlockId(props.blockId)
+  inspectorDrawer.document = nDocument;
+  inspectorDrawer.setSelectedBlockId(props.blockId);
 }
 </script>
 

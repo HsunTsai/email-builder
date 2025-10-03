@@ -1,9 +1,11 @@
-import { z } from 'zod';
+import { z } from "zod";
 
-import { ColumnsContainerPropsSchema as BaseColumnsContainerPropsSchema } from '@flyhub/email-block-columns-container';
-import type { ColumnsContainerProps as BaseColumnsContainerProps } from '@flyhub/email-block-columns-container';
+import { ColumnsContainerPropsSchema as BaseColumnsContainerPropsSchema } from "@flyhub/email-block-columns-container";
+import type { ColumnsContainerProps as BaseColumnsContainerProps } from "@flyhub/email-block-columns-container";
 
-const BasePropsShape = BaseColumnsContainerPropsSchema.shape.props.unwrap().unwrap().shape;
+const BasePropsShape = BaseColumnsContainerPropsSchema.shape.props
+  .unwrap()
+  .unwrap().shape;
 
 const ColumnsContainerPropsSchema = z.object({
   style: BaseColumnsContainerPropsSchema.shape.style,
@@ -20,15 +22,16 @@ const ColumnsContainerPropsSchema = z.object({
     .nullable(),
 });
 
-export type ColumnsContainerProps = Omit<BaseColumnsContainerProps, 'props'> & {
-  props?: Extract<BaseColumnsContainerProps['props'], object> & {
-    columns: [
-      { childrenIds: string[] },
-      { childrenIds: string[] },
-      { childrenIds: string[] }
-    ];
-  }
-  | null;
-}
+export type ColumnsContainerProps = Omit<BaseColumnsContainerProps, "props"> & {
+  props?:
+    | (Extract<BaseColumnsContainerProps["props"], object> & {
+        columns: [
+          { childrenIds: string[] },
+          { childrenIds: string[] },
+          { childrenIds: string[] },
+        ];
+      })
+    | null;
+};
 
 export default ColumnsContainerPropsSchema;

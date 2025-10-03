@@ -14,16 +14,16 @@
 </template>
 
 <script setup lang="ts">
-import RawSliderInput from './raw/RawSliderInput.vue';
+import RawSliderInput from "./raw/RawSliderInput.vue";
 
 type Props = {
-  label: string,
-  modelValue: number,
-}
+  label: string;
+  modelValue: number;
+};
 
-defineProps<Props>()
+defineProps<Props>();
 
 defineEmits<{
-  (e: 'change', args: number): void
-}>()
+  (e: "change", args: number): void;
+}>();
 </script>

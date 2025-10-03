@@ -3,10 +3,10 @@
 </template>
 
 <script setup lang="ts">
-import BaseColorInput from './BaseColorInput.vue';
+import BaseColorInput from "./BaseColorInput.vue";
 
 defineProps<{
-  label: string,
-  defaultValue: string | null,
-}>()
+  label: string;
+  defaultValue: string | null;
+}>();
 </script>

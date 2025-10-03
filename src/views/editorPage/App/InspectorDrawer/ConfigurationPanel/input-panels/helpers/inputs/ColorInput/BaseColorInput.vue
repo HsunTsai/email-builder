@@ -7,15 +7,25 @@
           <PopoverButton
             :class="[
               'flex items-center space-x-2 rounded-md border border-gray-300 bg-white px-3 py-2 text-sm shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2',
-              open ? 'ring-2 ring-blue-500' : ''
+              open ? 'ring-2 ring-blue-500' : '',
             ]"
           >
-            <span v-if="value === null" class="material-symbols-outlined text-lg text-gray-400">palette</span>
-            <span v-else :style="{ backgroundColor: value }" class="w-4 h-4 rounded-full border border-gray-300"></span>
+            <span
+              v-if="value === null"
+              class="material-symbols-outlined text-lg text-gray-400"
+              >palette</span
+            >
+            <span
+              v-else
+              :style="{ backgroundColor: value }"
+              class="w-4 h-4 rounded-full border border-gray-300"
+            ></span>
             <span>Choose color</span>
           </PopoverButton>
 
-          <PopoverPanel class="absolute z-10 mt-2 bg-white rounded-lg shadow-lg border border-gray-200 p-2">
+          <PopoverPanel
+            class="absolute z-10 mt-2 bg-white rounded-lg shadow-lg border border-gray-200 p-2"
+          >
             <input
               type="color"
               :value="value ?? '#000000'"
@@ -39,34 +49,41 @@
 </template>
 
 <script setup lang="ts">
-import { Popover, PopoverButton, PopoverPanel } from '@headlessui/vue'
-import { ref } from 'vue';
+import { Popover, PopoverButton, PopoverPanel } from "@headlessui/vue";
+import { ref } from "vue";
 
-type Props = {
-  nullable: true,
-  label: string,
-  defaultValue: string | null,
-} | {
-  nullable: false,
-  label: string,
-  defaultValue: string,
-}
+type Props =
+  | {
+      nullable: true;
+      label: string;
+      defaultValue: string | null;
+    }
+  | {
+      nullable: false;
+      label: string;
+      defaultValue: string;
+    };
 
-const props = defineProps<Props>()
+const props = defineProps<Props>();
 
 const emit = defineEmits<{
-  (e: 'change', args: typeof props.nullable extends true ? string | null : string): void
-}>()
+  (
+    e: "change",
+    args: typeof props.nullable extends true ? string | null : string,
+  ): void;
+}>();
 
 /** Refs */
 
-const value = ref(props.defaultValue)
+const value = ref(props.defaultValue);
 
 /** Functions */
 
 function handleChange(newValue: string | null) {
   value.value = newValue;
-  emit('change', newValue as typeof props.nullable extends true ? string | null : string);
+  emit(
+    "change",
+    newValue as typeof props.nullable extends true ? string | null : string,
+  );
 }
-
 </script>

@@ -45,43 +45,46 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue';
-import RawSliderInput from './raw/RawSliderInput.vue';
+import { computed } from "vue";
+import RawSliderInput from "./raw/RawSliderInput.vue";
 
 type TPaddingValue = {
-  top: number,
-  right: number,
-  bottom: number,
-  left: number,
-}
+  top: number;
+  right: number;
+  bottom: number;
+  left: number;
+};
 type Props = {
-  label: string,
-  modelValue: TPaddingValue | null,
-}
+  label: string;
+  modelValue: TPaddingValue | null;
+};
 
-const props = defineProps<Props>()
+const props = defineProps<Props>();
 
 const emit = defineEmits<{
-  (e: 'change', args: TPaddingValue): void
-}>()
+  (e: "change", args: TPaddingValue): void;
+}>();
 
 /** Computed */
 
-const value = computed(() => props.modelValue || {
-  top: 0,
-  right: 0,
-  bottom: 0,
-  left: 0,
-})
+const value = computed(
+  () =>
+    props.modelValue || {
+      top: 0,
+      right: 0,
+      bottom: 0,
+      left: 0,
+    },
+);
 
 /** Functions */
 
 function handleChange(internalName: keyof TPaddingValue, newValue: number) {
   const value = {
-    ...props.modelValue as Required<TPaddingValue>,
+    ...(props.modelValue as Required<TPaddingValue>),
     [internalName]: newValue,
-  }
+  };
 
-  emit('change', value)
-} 
+  emit("change", value);
+}
 </script>

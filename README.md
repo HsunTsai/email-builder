@@ -47,10 +47,10 @@ pnpm preview
 
 ```javascript
 // 取得 basename
-const baseUrl = import.meta.env.VITE_BASE_URL
+const baseUrl = import.meta.env.VITE_BASE_URL;
 
 // 取得環境類型
-const env = import.meta.env.NODE_ENV
+const env = import.meta.env.NODE_ENV;
 ```
 
 ### 修改 basename

@@ -22,7 +22,9 @@
       </TransitionChild>
 
       <div class="fixed inset-0 overflow-y-auto">
-        <div class="flex min-h-full items-center justify-center p-4 text-center">
+        <div
+          class="flex min-h-full items-center justify-center p-4 text-center"
+        >
           <TransitionChild
             as="template"
             enter="duration-300 ease-out"
@@ -41,17 +43,21 @@
               >
                 Import JSON
               </DialogTitle>
-              
+
               <div class="mt-4 space-y-4">
                 <p class="text-sm text-gray-600">
                   Copy and paste an EmailBuilder.js JSON (<a
                     href="https://gist.githubusercontent.com/jordanisip/efb61f56ba71bd36d3a9440122cb7f50/raw/30ea74a6ac7e52ebdc309bce07b71a9286ce2526/emailBuilderTemplate.json"
                     target="_blank"
                     class="text-blue-500 hover:underline"
-                  >example</a>).
+                    >example</a
+                  >).
                 </p>
 
-                <div v-if="error" class="bg-red-50 border border-red-200 rounded-md p-3">
+                <div
+                  v-if="error"
+                  class="bg-red-50 border border-red-200 rounded-md p-3"
+                >
                   <p class="text-sm text-red-800">{{ error }}</p>
                 </div>
 
@@ -63,13 +69,17 @@
                     rows="10"
                     :class="[
                       'w-full border rounded-md px-3 py-2 text-sm resize-none',
-                      error ? 'border-red-300 focus:border-red-500 focus:ring-red-500' : 'border-gray-300 focus:border-blue-500 focus:ring-blue-500'
+                      error
+                        ? 'border-red-300 focus:border-red-500 focus:ring-red-500'
+                        : 'border-gray-300 focus:border-blue-500 focus:ring-blue-500',
                     ]"
                     placeholder="Paste your JSON here..."
                   />
                 </form>
 
-                <p class="text-xs text-gray-500"> This will override your current template. </p>
+                <p class="text-xs text-gray-500">
+                  This will override your current template.
+                </p>
               </div>
 
               <div class="mt-6 flex justify-end space-x-3">
@@ -85,7 +95,9 @@
                   :disabled="error !== null"
                   :class="[
                     'inline-flex justify-center rounded-md border border-transparent px-4 py-2 text-sm font-medium text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2',
-                    error ? 'bg-gray-400 cursor-not-allowed' : 'bg-blue-600 hover:bg-blue-700'
+                    error
+                      ? 'bg-gray-400 cursor-not-allowed'
+                      : 'bg-blue-600 hover:bg-blue-700',
                   ]"
                   @click="handleSubmit"
                 >
@@ -101,32 +113,38 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
-import { Dialog, DialogPanel, DialogTitle, TransitionChild, TransitionRoot } from '@headlessui/vue'
-import { useInspectorDrawer } from '../../../documents/editor/editor.store';
-import validateJsonStringValue from './validateJsonStringValue';
+import { ref } from "vue";
+import {
+  Dialog,
+  DialogPanel,
+  DialogTitle,
+  TransitionChild,
+  TransitionRoot,
+} from "@headlessui/vue";
+import { useInspectorDrawer } from "../../../documents/editor/editor.store";
+import validateJsonStringValue from "./validateJsonStringValue";
 
-const inspectorDrawer = useInspectorDrawer()
+const inspectorDrawer = useInspectorDrawer();
 
 /** Refs */
 
-const value = ref('')
-const error = ref<string | null>(null)
-const open = ref(false)
+const value = ref("");
+const error = ref<string | null>(null);
+const open = ref(false);
 
 /** Functions */
 
 function handleChange() {
-  error.value = validateJsonStringValue(value.value).error ?? null
+  error.value = validateJsonStringValue(value.value).error ?? null;
 }
 
 function handleSubmit() {
-  const { error: err, data } = validateJsonStringValue(value.value)
-  error.value = err ?? null
+  const { error: err, data } = validateJsonStringValue(value.value);
+  error.value = err ?? null;
 
-  if (!data) return
+  if (!data) return;
 
-  inspectorDrawer.resetDocument(data)
-  open.value = false
+  inspectorDrawer.resetDocument(data);
+  open.value = false;
 }
 </script>

@@ -10,13 +10,13 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue'
-import { useInspectorDrawer } from '../../../documents/editor/editor.store'
+import { computed } from "vue";
+import { useInspectorDrawer } from "../../../documents/editor/editor.store";
 
-const inspectorDrawer = useInspectorDrawer()
+const inspectorDrawer = useInspectorDrawer();
 
 const href = computed(() => {
-  const doc = inspectorDrawer.document
-  return `data:text/plain,${encodeURIComponent(JSON.stringify(doc, null, '  '))}`;
-})
+  const doc = inspectorDrawer.document;
+  return `data:text/plain,${encodeURIComponent(JSON.stringify(doc, null, "  "))}`;
+});
 </script>

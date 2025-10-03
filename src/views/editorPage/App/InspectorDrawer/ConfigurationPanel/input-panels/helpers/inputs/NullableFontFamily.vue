@@ -61,38 +61,46 @@
 </template>
 
 <script setup lang="ts">
-import { Listbox, ListboxButton, ListboxOptions, ListboxOption } from '@headlessui/vue'
-import { CheckIcon, ChevronUpDownIcon } from '@heroicons/vue/20/solid'
-import { FONT_FAMILIES } from '@flyhub/email-core';
-import { ref, computed } from 'vue';
+import {
+  Listbox,
+  ListboxButton,
+  ListboxOptions,
+  ListboxOption,
+} from "@headlessui/vue";
+import { CheckIcon, ChevronUpDownIcon } from "@heroicons/vue/20/solid";
+import { FONT_FAMILIES } from "@flyhub/email-core";
+import { ref, computed } from "vue";
 
 const props = defineProps<{
   label: string;
   defaultValue: string | null;
-}>()
+}>();
 
 const emit = defineEmits<{
-  (e: 'change', args: string): void
-}>()
+  (e: "change", args: string): void;
+}>();
 
-const value = ref(props.defaultValue ?? 'inherit')
+const value = ref(props.defaultValue ?? "inherit");
 
-const options = FONT_FAMILIES.map((f) => ({
-  label: f.label,
-  value: f.key,
-})).concat({
-  label: 'Match email settings',
-  value: 'inherit',
-})
+const options = [
+  ...FONT_FAMILIES.map((f) => ({
+    label: f.label,
+    value: f.key,
+  })),
+  {
+    label: "Match email settings",
+    value: "inherit",
+  },
+];
 
 const selectedOption = computed(() => {
-  return options.find(option => option.value === value.value)
-})
+  return options.find((option) => option.value === value.value);
+});
 
 /** Functions */
 
 function handleChange(newValue: string) {
   value.value = newValue;
-  emit('change', newValue);
+  emit("change", newValue);
 }
 </script>

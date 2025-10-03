@@ -12,16 +12,16 @@
 </template>
 
 <script setup lang="ts">
-import RadioGroupInput from './RadioGroupInput.vue';
+import RadioGroupInput from "./RadioGroupInput.vue";
 
 type Props = {
-  label: string,
-  modelValue: string | null,
-}
+  label: string;
+  modelValue: string | null;
+};
 
-defineProps<Props>()
+defineProps<Props>();
 
 defineEmits<{
-  (e: 'change', args: string): void
-}>()
+  (e: "change", args: string): void;
+}>();
 </script>

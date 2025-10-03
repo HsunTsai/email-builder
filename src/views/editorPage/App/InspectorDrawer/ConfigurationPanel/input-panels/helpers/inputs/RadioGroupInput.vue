@@ -9,7 +9,7 @@
           'flex-1 px-3 py-2 text-sm font-medium border-r border-gray-300 last:border-r-0',
           item.value === modelValue
             ? 'bg-blue-500 text-white'
-            : 'bg-white text-gray-700 hover:bg-gray-50'
+            : 'bg-white text-gray-700 hover:bg-gray-50',
         ]"
         @click="$emit('update:model-value', item.value)"
       >
@@ -22,14 +22,17 @@
 
 <script setup generic="T extends string" lang="ts">
 type Props = {
-  label: string,
-  modelValue: T | null,
-  items: Array<{ label: string, value: T, icon?: never } | { icon: string, value: T, label?: never }>,
-}
+  label: string;
+  modelValue: T | null;
+  items: Array<
+    | { label: string; value: T; icon?: never }
+    | { icon: string; value: T; label?: never }
+  >;
+};
 
-const props = defineProps<Props>()
+const props = defineProps<Props>();
 
 defineEmits<{
-  (e: 'update:model-value', args: typeof props.items[number]['value']): void
-}>()
+  (e: "update:model-value", args: (typeof props.items)[number]["value"]): void;
+}>();
 </script>

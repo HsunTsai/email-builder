@@ -50,33 +50,33 @@
 </template>
 
 <script setup lang="ts">
-import { getFontFamily } from '@flyhub/email-core';
-import { currentBlockIdSymbol } from '../../editor/EditorBlock.vue';
-import type { TEditorBlock } from '@flyhub/email-core';
-import EditorChildrenIds from '../helpers/EditorChildrenIds.vue';
-import { inject } from 'vue';
+import { getFontFamily } from "@flyhub/email-core";
+import { currentBlockIdSymbol } from "../../editor/EditorBlock.vue";
+import type { TEditorBlock } from "@flyhub/email-core";
+import EditorChildrenIds from "../helpers/EditorChildrenIds.vue";
+import { inject } from "vue";
 
-import { useInspectorDrawer } from '../../editor/editor.store';
+import { useInspectorDrawer } from "../../editor/editor.store";
 
 type Props = {
-    backdropColor?: string | null;
-    borderColor?: string | null;
-    borderRadius?: number | null;
-    canvasColor?: string | null;
-    textColor?: string | null;
-    fontFamily?: string | null;
-    childrenIds?: string[] | null;
-}
+  backdropColor?: string | null;
+  borderColor?: string | null;
+  borderRadius?: number | null;
+  canvasColor?: string | null;
+  textColor?: string | null;
+  fontFamily?: string | null;
+  childrenIds?: string[] | null;
+};
 
 withDefaults(defineProps<Props>(), {
   childrenIds: () => [],
-})
+});
 
-const inspectorDrawer = useInspectorDrawer()
+const inspectorDrawer = useInspectorDrawer();
 
 /** Injections */
 
-const currentBlockId = inject(currentBlockIdSymbol)!
+const currentBlockId = inject(currentBlockIdSymbol)!;
 
 /** Functions */
 
@@ -84,7 +84,11 @@ function handleClick() {
   inspectorDrawer.setSelectedBlockId(null);
 }
 
-function handleChangeChildren(args: { block: TEditorBlock, blockId: string, childrenIds: string[] }) {
+function handleChangeChildren(args: {
+  block: TEditorBlock;
+  blockId: string;
+  childrenIds: string[];
+}) {
   const { block, blockId, childrenIds } = args;
 
   const document = inspectorDrawer.document;
@@ -92,13 +96,13 @@ function handleChangeChildren(args: { block: TEditorBlock, blockId: string, chil
   inspectorDrawer.setDocument({
     [blockId]: block,
     [currentBlockId]: {
-      type: 'EmailLayout',
+      type: "EmailLayout",
       data: {
         ...document[currentBlockId].data,
         childrenIds,
       },
     },
-  })
+  });
 
   inspectorDrawer.setSelectedBlockId(blockId);
 }

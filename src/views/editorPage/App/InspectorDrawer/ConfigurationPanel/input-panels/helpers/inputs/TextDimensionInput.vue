@@ -16,20 +16,20 @@
 
 <script setup lang="ts">
 type TextDimensionInputProps = {
-  label: string,
-  modelValue: number | null | undefined,
-}
+  label: string;
+  modelValue: number | null | undefined;
+};
 
-defineProps<TextDimensionInputProps>()
+defineProps<TextDimensionInputProps>();
 
 const emit = defineEmits<{
-  (e: 'change', args: number | null): void
-}>()
+  (e: "change", args: number | null): void;
+}>();
 
 /** Functions */
 
 function handleChange(newValue: string) {
   const value = parseInt(newValue);
-  emit('change', isNaN(value) ? null : value);
+  emit("change", isNaN(value) ? null : value);
 }
 </script>

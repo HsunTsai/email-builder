@@ -1,7 +1,11 @@
 <template>
-  <AddBlockButton v-if="!childrenIds?.length" placeholder @select="handleAppendBlock" />
+  <AddBlockButton
+    v-if="!childrenIds?.length"
+    placeholder
+    @select="handleAppendBlock"
+  />
   <template v-else>
-    <template v-for="childId, i in childrenIds" :key="childId">
+    <template v-for="(childId, i) in childrenIds" :key="childId">
       <AddBlockButton @select="handleInsertBlock($event, i)" />
       <EditorBlock :id="childId" />
     </template>
@@ -11,50 +15,50 @@
 
 <script lang="ts">
 export type EditorChildrenChange = {
-  block: TEditorBlock,
-  blockId: string,
-  childrenIds: string[]
-}
+  block: TEditorBlock;
+  blockId: string;
+  childrenIds: string[];
+};
 </script>
 
 <script setup lang="ts">
-import type { TEditorBlock } from '../../editor/core';
-import AddBlockButton from './AddBlockButton.vue';
-import EditorBlock from '../../editor/EditorBlock.vue';
+import type { TEditorBlock } from "../../editor/core";
+import AddBlockButton from "./AddBlockButton.vue";
+import EditorBlock from "../../editor/EditorBlock.vue";
 
 type EditorChildrenIdsProps = {
-  childrenIds: string[] | null | undefined
-}
+  childrenIds: string[] | null | undefined;
+};
 
 const emit = defineEmits<{
-  (e: 'change', args: EditorChildrenChange): void
-}>()
+  (e: "change", args: EditorChildrenChange): void;
+}>();
 
-const props = defineProps<EditorChildrenIdsProps>()
+const props = defineProps<EditorChildrenIdsProps>();
 
 /** Functions */
 
-const generateId = () => `block-${Date.now()}`
+const generateId = () => `block-${Date.now()}`;
 
 function handleInsertBlock(block: TEditorBlock, index: number) {
-  const blockId = generateId()
-  const newChildrenIds = [...(props.childrenIds || [])]
-  newChildrenIds.splice(index, 0, blockId)
+  const blockId = generateId();
+  const newChildrenIds = [...(props.childrenIds || [])];
+  newChildrenIds.splice(index, 0, blockId);
 
-  emit('change', {
+  emit("change", {
     blockId,
     block,
-    childrenIds: newChildrenIds
-  })
+    childrenIds: newChildrenIds,
+  });
 }
 
 function handleAppendBlock(block: TEditorBlock) {
-  const blockId = generateId()
+  const blockId = generateId();
 
-  emit('change', {
+  emit("change", {
     blockId,
     block,
-    childrenIds: [...(props.childrenIds || []), blockId]
-  })
+    childrenIds: [...(props.childrenIds || []), blockId],
+  });
 }
 </script>

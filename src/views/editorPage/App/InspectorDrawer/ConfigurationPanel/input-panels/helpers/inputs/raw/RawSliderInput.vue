@@ -7,7 +7,12 @@
       :max="max"
       :step="step"
       :value="modelValue"
-      @input="emit('update:model-value', Number(($event.target as HTMLInputElement).value))"
+      @input="
+        emit(
+          'update:model-value',
+          Number(($event.target as HTMLInputElement).value),
+        )
+      "
       class="flex-1 mx-4"
     />
     <div>
@@ -17,28 +22,28 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue';
+import { computed } from "vue";
 
 type SliderInputProps = {
-  iconLabel: string,
+  iconLabel: string;
 
-  step?: number,
-  units?: string,
-  min?: number,
-  max?: number,
+  step?: number;
+  units?: string;
+  min?: number;
+  max?: number;
 
-  modelValue: number | undefined,
-}
+  modelValue: number | undefined;
+};
 
-const props = defineProps<SliderInputProps>()
+const props = defineProps<SliderInputProps>();
 
 const emit = defineEmits<{
-  (e: 'update:model-value', args: number): void
-}>()
+  (e: "update:model-value", args: number): void;
+}>();
 
 const rest = computed(() => {
-  const { iconLabel: _1, units: _2, ...rest} = props;
+  const { iconLabel: _1, units: _2, ...rest } = props;
 
-  return rest
-})
+  return rest;
+});
 </script>

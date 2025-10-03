@@ -8,15 +8,15 @@
 </template>
 
 <script setup lang="ts">
-import BaseContainer from '@flyhub/email-block-container';
-import EditorChildrenIds from '../helpers/EditorChildrenIds.vue';
-import type { EditorChildrenChange } from '../helpers/EditorChildrenIds.vue';
-import type { ContainerProps } from './ContainerPropsSchema';
-import { currentBlockIdSymbol } from '../../editor/EditorBlock.vue';
-import { useInspectorDrawer } from '../../editor/editor.store';
-import { inject } from 'vue';
+import BaseContainer from "@flyhub/email-block-container";
+import EditorChildrenIds from "../helpers/EditorChildrenIds.vue";
+import type { EditorChildrenChange } from "../helpers/EditorChildrenIds.vue";
+import type { ContainerProps } from "./ContainerPropsSchema";
+import { currentBlockIdSymbol } from "../../editor/EditorBlock.vue";
+import { useInspectorDrawer } from "../../editor/editor.store";
+import { inject } from "vue";
 
-defineProps<ContainerProps>()
+defineProps<ContainerProps>();
 
 const inspectorDrawer = useInspectorDrawer();
 
@@ -26,20 +26,24 @@ const currentBlockId = inject(currentBlockIdSymbol) as string;
 
 /** Functions */
 
-function handleUpdateChildrenIds({ block, blockId, childrenIds }: EditorChildrenChange) {
+function handleUpdateChildrenIds({
+  block,
+  blockId,
+  childrenIds,
+}: EditorChildrenChange) {
   const document = inspectorDrawer.document;
 
   inspectorDrawer.setDocument({
     [blockId]: block,
     [currentBlockId]: {
-      type: 'Container',
+      type: "Container",
       data: {
         ...document[currentBlockId].data,
-        props: { childrenIds }
-      }
-    }
-  })
+        props: { childrenIds },
+      },
+    },
+  });
 
-  inspectorDrawer.setSelectedBlockId(blockId)
+  inspectorDrawer.setSelectedBlockId(blockId);
 }
 </script>

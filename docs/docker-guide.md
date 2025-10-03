@@ -20,10 +20,12 @@ docker-compose up -d
 ## 📋 基本指令
 
 ### npm 腳本
+
 - `docker:build` - 建置 Docker image
 - `docker:run` - 運行容器 (端口 8080)
 
 ### Docker 指令
+
 ```bash
 # 建置（使用預設 base URL）
 docker build -t email-builder .
@@ -50,6 +52,7 @@ docker exec -it email-builder sh
 ## 🐳 Dockerfile 說明
 
 ### 特性
+
 - 基於 Node.js 18 Alpine
 - 內建 nginx 提供靜態檔案服務
 - 建置時設定 base URL (ARG VITE_BASE_URL)
@@ -59,15 +62,17 @@ docker exec -it email-builder sh
 - 自動重定向根路徑到 `/email-builder/`
 
 ### 建置時環境變數
+
 應用在建置階段設定 base URL，確保所有資源路徑正確。
 
 ## 🔧 環境變數
 
-| 變數名 | 類型 | 描述 | 預設值 |
-|--------|------|------|--------|
+| 變數名          | 類型   | 描述         | 預設值            |
+| --------------- | ------ | ------------ | ----------------- |
 | `VITE_BASE_URL` | 建置時 | 應用基礎路徑 | `/email-builder/` |
 
 ### 自定義 base URL
+
 ```bash
 # 建置時指定不同的 base URL
 docker build --build-arg VITE_BASE_URL=/my-app/ -t email-builder .
@@ -81,16 +86,19 @@ docker build --build-arg VITE_BASE_URL=/my-app/ -t email-builder .
 ## 🔍 除錯
 
 ### 查看容器狀態
+
 ```bash
 docker ps
 ```
 
 ### 查看容器日誌
+
 ```bash
 docker logs -f email-builder
 ```
 
 ### 測試健康檢查
+
 ```bash
 curl http://localhost:8080/health
 ```

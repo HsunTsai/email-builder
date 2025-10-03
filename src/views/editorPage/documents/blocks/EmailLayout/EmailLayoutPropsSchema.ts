@@ -1,5 +1,9 @@
-import { z } from 'zod';
-import { COLOR_SCHEMA, FONT_FAMILY_NAMES, FONT_FAMILY_SCHEMA } from '@flyhub/email-core'
+import { z } from "zod";
+import {
+  COLOR_SCHEMA,
+  FONT_FAMILY_NAMES,
+  FONT_FAMILY_SCHEMA,
+} from "@flyhub/email-core";
 
 const EmailLayoutPropsSchema = z.object({
   backdropColor: COLOR_SCHEMA,
@@ -19,6 +23,6 @@ export type EmailLayoutProps = {
   borderRadius?: number | null;
   canvasColor?: string | null;
   textColor?: string | null;
-  fontFamily?: typeof FONT_FAMILY_NAMES[number] | null;
+  fontFamily?: (typeof FONT_FAMILY_NAMES)[number] | null;
   childrenIds?: string[] | null;
 };

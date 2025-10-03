@@ -10,37 +10,35 @@
 </template>
 
 <script setup lang="ts">
-import TextDimensionInput from './TextDimensionInput.vue';
-import { computed } from 'vue';
+import TextDimensionInput from "./TextDimensionInput.vue";
+import { computed } from "vue";
 
 type TWidthValue = number | null | undefined;
-type FixedWidths = [
-  TWidthValue,
-  TWidthValue,
-  TWidthValue
-];
+type FixedWidths = [TWidthValue, TWidthValue, TWidthValue];
 
 type ColumnsLayoutInputProps = {
-  columnsCount: number,
-  modelValue: FixedWidths | null | undefined,
-}
+  columnsCount: number;
+  modelValue: FixedWidths | null | undefined;
+};
 
-const props = defineProps<ColumnsLayoutInputProps>()
+const props = defineProps<ColumnsLayoutInputProps>();
 
 const emit = defineEmits<{
-  (e: 'update:model-value', args: FixedWidths): void
-}>()
+  (e: "update:model-value", args: FixedWidths): void;
+}>();
 
 /** Computed */
 
-const currentValue = computed(() => props.modelValue ?? [null, null, null] satisfies FixedWidths)
+const currentValue = computed(
+  () => props.modelValue ?? ([null, null, null] satisfies FixedWidths),
+);
 
 /** Functions */
 
 function setIndex(index: number, value: TWidthValue) {
-  const nValue: FixedWidths = [...currentValue.value]
+  const nValue: FixedWidths = [...currentValue.value];
   nValue[index] = value;
 
-  emit('update:model-value', nValue);
+  emit("update:model-value", nValue);
 }
 </script>
