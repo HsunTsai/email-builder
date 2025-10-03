@@ -1,27 +1,61 @@
 <template>
-  <div id="app">
-    <nav class="navigation" v-if="showNavigation">
-      <div class="nav-container">
-        <div class="nav-brand">
-          <router-link to="/" class="brand-link">
-            <img alt="Vue logo" src="./assets/logo.png" class="logo">
-            <span>Email Builder</span>
-          </router-link>
+  <div id="app" class="min-h-screen bg-gray-50">
+    <nav v-if="showNavigation" class="bg-white shadow-sm border-b border-gray-200 sticky top-0 z-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16">
+          <div class="flex items-center">
+            <router-link to="/" class="flex items-center space-x-3 text-gray-900 hover:text-blue-600 transition-colors">
+              <img alt="Vue logo" src="./assets/logo.png" class="h-8 w-8">
+              <span class="text-xl font-semibold">Email Builder</span>
+            </router-link>
+          </div>
+          
+          <div class="hidden md:flex space-x-1">
+            <router-link to="/" class="nav-link" :class="{ 'nav-link-active': $route.name === 'Home' }">
+              首頁
+            </router-link>
+            <router-link to="/templates" class="nav-link" :class="{ 'nav-link-active': $route.name === 'Templates' }">
+              模板庫
+            </router-link>
+            <router-link to="/editor" class="nav-link" :class="{ 'nav-link-active': $route.name === 'Editor' }">
+              編輯器
+            </router-link>
+          </div>
+          
+          <div class="hidden md:block">
+            <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded font-mono">
+              {{ baseUrl }}
+            </span>
+          </div>
+          
+          <!-- 行動裝置選單按鈕 -->
+          <div class="md:hidden">
+            <button @click="mobileMenuOpen = !mobileMenuOpen" class="text-gray-500 hover:text-gray-700 focus:outline-none focus:text-gray-700">
+              <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+            </button>
+          </div>
         </div>
         
-        <div class="nav-links">
-          <router-link to="/" class="nav-link">首頁</router-link>
-          <router-link to="/templates" class="nav-link">模板庫</router-link>
-          <router-link to="/editor" class="nav-link">編輯器</router-link>
-        </div>
-        
-        <div class="nav-info">
-          <span class="base-url">{{ baseUrl }}</span>
+        <!-- 行動裝置選單 -->
+        <div v-if="mobileMenuOpen" class="md:hidden border-t border-gray-200 py-3">
+          <div class="space-y-1">
+            <router-link to="/" @click="mobileMenuOpen = false" class="block nav-link" :class="{ 'nav-link-active': $route.name === 'Home' }">
+              首頁
+            </router-link>
+            <router-link to="/templates" @click="mobileMenuOpen = false" class="block nav-link" :class="{ 'nav-link-active': $route.name === 'Templates' }">
+              模板庫
+            </router-link>
+            <router-link to="/editor" @click="mobileMenuOpen = false" class="block nav-link" :class="{ 'nav-link-active': $route.name === 'Editor' }">
+              編輯器
+            </router-link>
+          </div>
         </div>
       </div>
     </nav>
     
-    <main class="main-content" :class="{ 'with-nav': showNavigation }">
+    <main class="flex-1">
       <router-view />
     </main>
   </div>
@@ -33,7 +67,8 @@ export default {
   data() {
     return {
       baseUrl: import.meta.env.VITE_BASE_URL || '/',
-      environment: import.meta.env.NODE_ENV || 'development'
+      environment: import.meta.env.NODE_ENV || 'development',
+      mobileMenuOpen: false
     }
   },
   computed: {
@@ -41,138 +76,12 @@ export default {
       // 在編輯器頁面隱藏頂部導航以獲得更多空間
       return this.$route.name !== 'Editor'
     }
+  },
+  watch: {
+    $route() {
+      // 路由變化時關閉行動裝置選單
+      this.mobileMenuOpen = false
+    }
   }
 }
 </script>
-
-<style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  color: #2c3e50;
-  min-height: 100vh;
-}
-
-.navigation {
-  background: white;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  position: sticky;
-  top: 0;
-  z-index: 100;
-}
-
-.nav-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 20px;
-  height: 64px;
-}
-
-.nav-brand {
-  display: flex;
-  align-items: center;
-}
-
-.brand-link {
-  display: flex;
-  align-items: center;
-  text-decoration: none;
-  color: #2c3e50;
-  font-weight: 600;
-  font-size: 1.2rem;
-}
-
-.logo {
-  height: 32px;
-  margin-right: 12px;
-}
-
-.nav-links {
-  display: flex;
-  gap: 24px;
-}
-
-.nav-link {
-  text-decoration: none;
-  color: #555;
-  font-weight: 500;
-  padding: 8px 16px;
-  border-radius: 4px;
-  transition: all 0.2s;
-}
-
-.nav-link:hover {
-  background-color: #f8f9fa;
-  color: #007bff;
-}
-
-.nav-link.router-link-active {
-  color: #007bff;
-  background-color: #e3f2fd;
-}
-
-.nav-info {
-  font-size: 0.875rem;
-  color: #6c757d;
-}
-
-.base-url {
-  background-color: #f8f9fa;
-  padding: 4px 8px;
-  border-radius: 4px;
-  font-family: monospace;
-}
-
-.main-content {
-  min-height: calc(100vh - 64px);
-}
-
-.main-content.with-nav {
-  background-color: #f8f9fa;
-}
-
-/* 響應式設計 */
-@media (max-width: 768px) {
-  .nav-container {
-    padding: 0 15px;
-  }
-  
-  .nav-links {
-    gap: 16px;
-  }
-  
-  .nav-link {
-    padding: 6px 12px;
-    font-size: 0.9rem;
-  }
-  
-  .nav-info {
-    display: none;
-  }
-}
-
-@media (max-width: 480px) {
-  .brand-link span {
-    display: none;
-  }
-  
-  .nav-links {
-    gap: 8px;
-  }
-  
-  .nav-link {
-    padding: 4px 8px;
-    font-size: 0.8rem;
-  }
-}
-</style>
