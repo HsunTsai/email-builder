@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  email-builder:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        VITE_BASE_URL: /email-builder/
+    image: email-builder:latest
+    container_name: email-builder
+    ports:
+      - "8080:80"
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s

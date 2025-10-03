@@ -56,3 +56,50 @@ const env = import.meta.env.NODE_ENV
 ### 修改 basename
 
 如需修改應用的部署路徑，只需修改對應環境檔案中的 `VITE_BASE_URL` 值即可。
+
+## Docker 部署
+
+本專案支援 Docker 容器化部署：
+
+### 快速開始
+
+```bash
+# 建置 Docker image
+pnpm run docker:build
+
+# 運行容器
+pnpm run docker:run
+
+# 使用 Docker Compose
+docker-compose up -d
+```
+
+### 可用指令
+
+```bash
+# 建置 image
+docker build -t email-builder .
+
+# 運行容器
+docker run -d -p 8080:80 --name email-builder email-builder
+
+# 停止容器
+docker stop email-builder
+
+# 移除容器
+docker rm email-builder
+
+# 查看日誌
+docker logs -f email-builder
+
+# 健康檢查
+curl http://localhost:8080/health
+
+# 自定義 base URL 建置
+docker build --build-arg VITE_BASE_URL=/custom-path/ -t email-builder .
+```
+
+### 存取應用
+
+- **應用**: http://localhost:8080/email-builder/
+- **健康檢查**: http://localhost:8080/health

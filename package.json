@@ -7,7 +7,9 @@
     "build": "vite build",
     "preview": "vite preview",
     "serve": "vite",
-    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore"
+    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",
+    "docker:build": "docker build -t email-builder .",
+    "docker:run": "docker run -d -p 8080:80 --name email-builder email-builder"
   },
   "dependencies": {
     "@usewaypoint/email-builder": "0.0.8",
