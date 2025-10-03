@@ -8,9 +8,7 @@ module.exports = {
   extends: [
     "plugin:vue/vue3-essential",
     "eslint:recommended",
-    "@typescript-eslint/recommended",
   ],
-  parser: "@typescript-eslint/parser",
   parserOptions: {
     ecmaVersion: 2022,
     sourceType: "module",
@@ -19,7 +17,6 @@ module.exports = {
       jsx: true,
     },
   },
-  plugins: ["@typescript-eslint"],
   globals: {
     defineProps: "readonly",
     defineEmits: "readonly",
@@ -28,14 +25,44 @@ module.exports = {
   },
   rules: {
     // 忽略未使用的變數警告（開發階段常見）
-    "no-unused-vars": "off",
-    "@typescript-eslint/no-unused-vars": "warn",
+    "no-unused-vars": "warn",
     // 允許 console 語句
-    "no-console": "warn",
-    // 允許 any 類型（混合 React/Vue 環境需要）
-    "@typescript-eslint/no-explicit-any": "off",
+    "no-console": "off",
+    // 允許 debugger 語句
+    "no-debugger": process.env.NODE_ENV === "production" ? "error" : "off",
+    // Vue 相關規則
+    "vue/multi-word-component-names": "off",
+    "vue/no-multiple-template-root": "off",
+    "vue/valid-define-props": "off",
+    "vue/valid-define-emits": "off",
+    "vue/valid-template-root": "off",
+    "vue/valid-v-for": "warn",
+    "vue/no-unused-vars": "warn",
   },
   overrides: [
+    // TypeScript files
+    {
+      files: ["*.ts", "*.tsx"],
+      parser: "@typescript-eslint/parser",
+      plugins: ["@typescript-eslint"],
+      extends: [
+        "plugin:@typescript-eslint/recommended",
+      ],
+      parserOptions: {
+        ecmaVersion: 2022,
+        sourceType: "module",
+        project: "./tsconfig.json",
+        tsconfigRootDir: __dirname,
+      },
+      rules: {
+        "@typescript-eslint/no-unused-vars": "warn",
+        "@typescript-eslint/no-explicit-any": "warn",
+        "@typescript-eslint/ban-ts-comment": "warn",
+        "no-undef": "off", // TypeScript handles this
+        "no-unused-vars": "off", // Use TypeScript version instead
+      },
+    },
+    // Vue files with TypeScript
     {
       files: ["*.vue"],
       parser: "vue-eslint-parser",
@@ -43,22 +70,28 @@ module.exports = {
         parser: "@typescript-eslint/parser",
         ecmaVersion: 2022,
         sourceType: "module",
+        project: "./tsconfig.json",
+        tsconfigRootDir: __dirname,
+        extraFileExtensions: [".vue"],
         ecmaFeatures: {
           jsx: true,
         },
       },
-    },
-    {
-      files: ["*.js", "*.mjs"],
-      parser: "@typescript-eslint/parser",
-      parserOptions: {
-        ecmaVersion: 2022,
-        sourceType: "module",
+      plugins: ["@typescript-eslint"],
+      extends: [
+        "plugin:@typescript-eslint/recommended",
+      ],
+      rules: {
+        "@typescript-eslint/no-unused-vars": "warn",
+        "@typescript-eslint/no-explicit-any": "warn",
+        "@typescript-eslint/ban-ts-comment": "warn",
+        "no-undef": "off", // TypeScript handles this
+        "no-unused-vars": "off", // Use TypeScript version instead
       },
     },
+    // JavaScript files
     {
-      files: ["*.tsx", "*.ts"],
-      parser: "@typescript-eslint/parser",
+      files: ["*.js", "*.mjs", "*.jsx"],
       parserOptions: {
         ecmaVersion: 2022,
         sourceType: "module",

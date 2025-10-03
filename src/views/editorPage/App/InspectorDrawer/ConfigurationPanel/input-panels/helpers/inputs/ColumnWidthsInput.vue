@@ -2,6 +2,7 @@
   <div class="flex gap-1">
     <TextDimensionInput
       v-for="index in columnsCount"
+      :key="index"
       :label="`Column ${index}`"
       :model-value="currentValue?.[index - 1]"
       @update:model-value="setIndex(index - 1, $event)"

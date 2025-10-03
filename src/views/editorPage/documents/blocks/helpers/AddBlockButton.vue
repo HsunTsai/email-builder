@@ -48,25 +48,4 @@ const buttonComponent = computed(() => {
 
   return DividerButton;
 });
-
-/** Functions */
-
-function handleMouseMove(e: MouseEvent) {
-  const { clientX, clientY } = e;
-  const buttonElement = e.target as HTMLElement;
-
-  const rect = buttonElement.getBoundingClientRect();
-  const rectY = rect.y;
-  const bottomX = rect.x;
-  const topX = bottomX + rect.width;
-
-  if (Math.abs(clientY - rectY) < 20) {
-    if (bottomX < clientX && clientX < topX) {
-      visible.value = true;
-      return;
-    }
-  }
-
-  visible.value = false;
-}
 </script>

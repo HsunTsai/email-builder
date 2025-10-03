@@ -53,6 +53,7 @@ import BooleanInput from "./helpers/inputs/BooleanInput.vue";
 import type { TextProps } from "@flyhub/email-block-text";
 import { TextPropsSchema } from "@flyhub/email-block-text";
 import { ref } from "vue";
+import * as Zod from "zod";
 
 type TextSidebarPanelProps = {
   data: TextProps;

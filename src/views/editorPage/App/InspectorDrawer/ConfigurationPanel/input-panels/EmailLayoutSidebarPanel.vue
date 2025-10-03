@@ -47,6 +47,7 @@ import ColorInput from "./helpers/inputs/ColorInput/ColorInput.vue";
 import NullableColorInput from "./helpers/inputs/ColorInput/NullableColorInput.vue";
 import SliderInput from "./helpers/inputs/SliderInput.vue";
 import { ref } from "vue";
+import * as Zod from "zod";
 
 type EmailLayoutSidebarFieldsProps = {
   data: Omit<EmailLayoutProps, "document">;
