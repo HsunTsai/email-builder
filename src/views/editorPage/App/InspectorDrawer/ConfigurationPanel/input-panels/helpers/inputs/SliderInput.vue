@@ -1,11 +1,12 @@
 <template>
-  <UFormField :label="label">
+  <div class="space-y-2">
+    <label class="block text-sm font-medium text-gray-700">{{ label }}</label>
     <RawSliderInput
       v-bind="rest"
       :model-value="value ?? undefined /** converts null to undefined */"
       @update:model-value="handleChange"
     />
-  </UFormField>
+  </div>
 </template>
 
 <script setup lang="ts">

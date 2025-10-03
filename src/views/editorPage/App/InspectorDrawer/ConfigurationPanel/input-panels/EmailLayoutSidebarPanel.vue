@@ -15,18 +15,16 @@
       :default-value="props.data.borderColor ?? null"
       @change="handleUpdateData({ ...props.data, borderColor: $event })"
       />
-    <UFormField>
-      <SliderInput
-        label="Canvas border radius"
-        icon-label="material-symbols:rounded-corner"
-        units="px"
-        :default-value="props.data.borderRadius ?? 0"
-        :min="0"
-        :max="48"
-        :step="4"
-        @change="handleUpdateData({ ...props.data, borderRadius: $event })"
-      />
-    </UFormField>
+    <SliderInput
+      label="Canvas border radius"
+      icon-label="material-symbols:rounded-corner"
+      units="px"
+      :default-value="props.data.borderRadius ?? 0"
+      :min="0"
+      :max="48"
+      :step="4"
+      @change="handleUpdateData({ ...props.data, borderRadius: $event })"
+    />
     <NullableFontFamily
       label="Font family"
       default-value="MODERN_SANS"

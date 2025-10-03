@@ -1,40 +1,45 @@
 <template>
   <div class="space-y-2">
-    <UFormField :label="label">
-      <div
-        class="gap-x-1 flex items-center"
-        :style="{
-          '--bg-color': value ?? '#FFFFFF',
-        }"
-      >
-        <UPopover>
-          <UButton label="Choose color" color="neutral" variant="outline">
-            <template #leading>
-              <UIcon v-if="value === null" name="material-symbols:palette" class="text-lg" />
-              <span v-else :style="{ backgroundColor: value ?? undefined }" class="size-3 rounded-full" />
-            </template>
-          </UButton>
+    <label class="block text-sm font-medium text-gray-700">{{ label }}</label>
+    <div class="flex items-center gap-2">
+      <div class="relative">
+        <Popover v-slot="{ open }" class="relative">
+          <PopoverButton
+            :class="[
+              'flex items-center space-x-2 rounded-md border border-gray-300 bg-white px-3 py-2 text-sm shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2',
+              open ? 'ring-2 ring-blue-500' : ''
+            ]"
+          >
+            <span v-if="value === null" class="material-symbols-outlined text-lg text-gray-400">palette</span>
+            <span v-else :style="{ backgroundColor: value }" class="w-4 h-4 rounded-full border border-gray-300"></span>
+            <span>Choose color</span>
+          </PopoverButton>
 
-          <template #content>
-            <UColorPicker :model-value="value ?? undefined" class="p-2" @update:model-value="handleChange($event ?? null)" />
-          </template>
-        </UPopover>
-
-        <!-- reset button -->
-        <UButton
-          v-if="nullable && typeof value === 'string' && value.length > 0"
-          class="bg-transparent text-white p-1 cursor-pointer hover:bg-white/10"
-          size="sm"
-          @click="handleChange(null)"
-        >
-          <UIcon name="material-symbols:close" class="text-xl" />
-        </UButton>
+          <PopoverPanel class="absolute z-10 mt-2 bg-white rounded-lg shadow-lg border border-gray-200 p-2">
+            <input
+              type="color"
+              :value="value ?? '#000000'"
+              @input="handleChange(($event.target as HTMLInputElement).value)"
+              class="w-32 h-32 border-none cursor-pointer"
+            />
+          </PopoverPanel>
+        </Popover>
       </div>
-    </UFormField>
+
+      <button
+        v-if="nullable && typeof value === 'string' && value.length > 0"
+        @click="handleChange(null)"
+        class="p-1 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded"
+        title="Reset color"
+      >
+        <span class="material-symbols-outlined text-lg">close</span>
+      </button>
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
+import { Popover, PopoverButton, PopoverPanel } from '@headlessui/vue'
 import { ref } from 'vue';
 
 type Props = {

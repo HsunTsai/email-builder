@@ -1,18 +1,9 @@
 <template>
-  <UButton
-    :style="{
-      display: 'flex',
-      alignContent: 'center',
-      justifyContent: 'center',
-      height: '48px',
-      width: '100%',
-      backgroundColor: 'rgba(0, 0, 0, 0.08)',
-      borderRadius: 0,
-      cursor: 'pointer',
-    }"
+  <button
+    class="flex items-center justify-center h-12 w-full bg-black bg-opacity-8 cursor-pointer border-none rounded-none hover:bg-black hover:bg-opacity-12"
   >
-    <span style="background-color: #0079CC; width: 20px; height: 20px; display: inline-flex; border-radius: 50%; align-items: center; justify-content: center;">
-      <UIcon name="material-symbols:add" style="font-size: 1.2rem; color: white;" />
+    <span class="bg-blue-600 w-5 h-5 flex items-center justify-center rounded-full">
+      <span class="material-symbols-outlined text-white text-sm">add</span>
     </span>
-  </UButton>
+  </button>
 </template>

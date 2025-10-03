@@ -1,13 +1,15 @@
 <template>
   <BaseSidebarPanel title="Heading block">
-    <UFormField label="Content">
-      <UTextarea
-        :rows="3"
-        :model-value="data.props?.text ?? HeadingPropsDefaults.text"
-        @update:model-value="handleUpdateData({ ...data, props: { ...data.props, text: $event as string } })"
-        class="w-full"
+    <div class="space-y-2">
+      <label class="block text-sm font-medium text-gray-700">Content</label>
+      <textarea
+        rows="3"
+        :value="data.props?.text ?? HeadingPropsDefaults.text"
+        @input="handleUpdateData({ ...data, props: { ...data.props, text: ($event.target as HTMLTextAreaElement).value } })"
+        class="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:border-blue-500 focus:ring-blue-500 resize-none"
+        placeholder="Enter heading text..."
       />
-    </UFormField>
+    </div>
     <RadioGroupInput
       label="Level"
       :model-value="data.props?.level ?? HeadingPropsDefaults.level"

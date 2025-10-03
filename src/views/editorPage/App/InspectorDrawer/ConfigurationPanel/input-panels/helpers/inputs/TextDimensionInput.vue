@@ -1,15 +1,17 @@
 <template>
-  <UFormField :label="label">
-    <UInput
-      :model-value="modelValue"
-      @update:model-value="handleChange($event as string)"
-      placeholder="auto"
-    >
-      <template #trailing>
-        px
-      </template>
-    </UInput>
-  </UFormField>
+  <div class="space-y-2">
+    <label class="block text-sm font-medium text-gray-700">{{ label }}</label>
+    <div class="relative">
+      <input
+        type="text"
+        :value="modelValue"
+        @input="handleChange(($event.target as HTMLInputElement).value)"
+        placeholder="auto"
+        class="w-full border border-gray-300 rounded-md px-3 py-2 pr-8 text-sm focus:border-blue-500 focus:ring-blue-500"
+      />
+      <span class="absolute right-3 top-2 text-sm text-gray-500">px</span>
+    </div>
+  </div>
 </template>
 
 <script setup lang="ts">

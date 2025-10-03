@@ -1,11 +1,25 @@
 <template>
   <BaseSidebarPanel title="Button block">
-    <UFormField label="Text">
-      <UInput :model-value="text" @update:model-value="handleUpdateData({ ...data, props: { ...data.props, text: $event as string } })" class="w-full" />
-    </UFormField>
-    <UFormField label="Url">
-      <UInput :model-value="url" @update:model-value="handleUpdateData({ ...data, props: { ...data.props, url: $event as string } })" class="w-full" />
-    </UFormField>
+    <div class="space-y-4">
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1">Text</label>
+        <input 
+          type="text"
+          :value="text" 
+          @input="handleUpdateData({ ...data, props: { ...data.props, text: ($event.target as HTMLInputElement).value } })" 
+          class="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:border-blue-500 focus:ring-blue-500" 
+        />
+      </div>
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1">URL</label>
+        <input 
+          type="url"
+          :value="url" 
+          @input="handleUpdateData({ ...data, props: { ...data.props, url: ($event.target as HTMLInputElement).value } })" 
+          class="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:border-blue-500 focus:ring-blue-500" 
+        />
+      </div>
+    </div>
     <RadioGroupInput
       label="Width"
       :model-value="fullWidth ? 'FULL_WIDTH' : 'AUTO'"

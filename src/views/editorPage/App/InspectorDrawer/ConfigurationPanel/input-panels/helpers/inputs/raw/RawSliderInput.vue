@@ -1,9 +1,14 @@
 <template>
   <div class="flex gap-2 items-center justify-between w-full">
-    <UIcon :name="iconLabel" class="text-3xl" />
-    <USlider
-      v-bind="rest"
-      @update:model-value="emit('update:model-value', $event as number)"
+    <span :class="iconLabel" class="text-3xl"></span>
+    <input
+      type="range"
+      :min="min"
+      :max="max"
+      :step="step"
+      :value="modelValue"
+      @input="emit('update:model-value', Number(($event.target as HTMLInputElement).value))"
+      class="flex-1 mx-4"
     />
     <div>
       <span class="text-right">{{ modelValue }}{{ units }}</span>

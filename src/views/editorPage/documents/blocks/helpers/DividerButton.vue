@@ -1,29 +1,13 @@
 <template>
-  <div
-    :style="{
-      position: 'absolute',
-      top: '50%',
-      left: '50%',
-      transform: 'translate(-50%, -50%)',
-    }">
-    <UButton
-      :style="{
-        display: 'flex',
-        alignContent: 'center',
-        justifyContent: 'center',
-        height: 48,
-        width: '100%',
-        padding: 0,
-        backgroundColor: 'transparent',
-        borderRadius: 0,
-        cursor: 'pointer',
-      }"
+  <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+    <button
       @click="$emit('click', $event)"
+      class="flex items-center justify-center h-12 w-full p-0 bg-transparent border-none rounded-none cursor-pointer"
     >
-      <span style="background-color: #0079CC; width: 20px; height: 20px; display: inline-flex; border-radius: 50%; align-items: center; justify-content: center;">
-        <UIcon name="material-symbols:add" style="font-size: 1.2rem; color: white;" />
+      <span class="bg-blue-600 w-5 h-5 flex items-center justify-center rounded-full">
+        <span class="material-symbols-outlined text-white text-sm">add</span>
       </span>
-    </UButton>
+    </button>
   </div>
 </template>
 

@@ -1,36 +1,45 @@
 <template>
   <BaseSidebarPanel title="Image block">
-    <UFormField label="Source URL">
-      <UInput
-        :model-value="data.props?.url ?? ''"
-        @update:model-value="(e) => {
-          const event = (e as string).trim();
+    <div class="space-y-2">
+      <label class="block text-sm font-medium text-gray-700">Source URL</label>
+      <input
+        type="url"
+        :value="data.props?.url ?? ''"
+        @input="(e) => {
+          const event = (e.target as HTMLInputElement).value.trim();
           const url = event.length === 0 ? null : event;
           handleUpdateData({ ...data, props: { ...data.props, url } })
         }"
-        class="w-full"
+        class="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:border-blue-500 focus:ring-blue-500"
+        placeholder="https://example.com/image.jpg"
       />
-    </UFormField>
+    </div>
 
-    <UFormField label="Alt text">
-      <UInput
-        :model-value="data.props?.alt ?? ''"
-        @update:model-value="handleUpdateData({ ...data, props: { ...data.props, alt: $event as string } })"
-        class="w-full"
+    <div class="space-y-2">
+      <label class="block text-sm font-medium text-gray-700">Alt text</label>
+      <input
+        type="text"
+        :value="data.props?.alt ?? ''"
+        @input="handleUpdateData({ ...data, props: { ...data.props, alt: ($event.target as HTMLInputElement).value } })"
+        class="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:border-blue-500 focus:ring-blue-500"
+        placeholder="Image description"
       />
-    </UFormField>
+    </div>
 
-    <UFormField label="Click through URL">
-      <UInput
-        :model-value="data.props?.linkHref ?? ''"
-        @update:model-value="(e) => {
-          const event = (e as string).trim();
+    <div class="space-y-2">
+      <label class="block text-sm font-medium text-gray-700">Click through URL</label>
+      <input
+        type="url"
+        :value="data.props?.linkHref ?? ''"
+        @input="(e) => {
+          const event = (e.target as HTMLInputElement).value.trim();
           const linkHref = event.length === 0 ? null : event;
           handleUpdateData({ ...data, props: { ...data.props, linkHref } })
         }"
-        class="w-full"
+        class="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:border-blue-500 focus:ring-blue-500"
+        placeholder="https://example.com/link"
       />
-    </UFormField>
+    </div>
 
     <div class="flex gap-2">
       <TextDimensionInput

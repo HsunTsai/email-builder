@@ -1,13 +1,15 @@
 <template>
   <BaseSidebarPanel title="Text block">
-    <UFormField label="Text">
-      <UTextarea
-        :rows="5"
-        :model-value="data.props?.text ?? ''"
-        @update:model-value="handleUpdateData({ ...data, props: { ...data.props, text: $event as string } })"
-        class="w-full"
+    <div class="space-y-2">
+      <label class="block text-sm font-medium text-gray-700">Text</label>
+      <textarea
+        rows="5"
+        :value="data.props?.text ?? ''"
+        @input="handleUpdateData({ ...data, props: { ...data.props, text: ($event.target as HTMLTextAreaElement).value } })"
+        class="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:border-blue-500 focus:ring-blue-500 resize-none"
+        placeholder="Enter your text here..."
       />
-    </UFormField>
+    </div>
 
     <BooleanInput
       label="Markdown"

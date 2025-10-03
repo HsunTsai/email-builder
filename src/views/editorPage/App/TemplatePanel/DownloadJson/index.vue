@@ -1,14 +1,12 @@
 <template>
-  <UTooltip text="Download JSON file">
-    <UButton
-      :to="href"
-      variant="ghost"
-      color="neutral"
-      icon="material-symbols:download"
-      class="cursor-pointer"
-      download="emailTemplate.json"
-    />
-  </UTooltip>
+  <a
+    :href="href"
+    download="emailTemplate.json"
+    class="p-2 text-gray-500 hover:text-gray-700 hover:bg-gray-100 rounded-md"
+    title="Download JSON file"
+  >
+    <span class="material-symbols-outlined text-base">download</span>
+  </a>
 </template>
 
 <script setup lang="ts">

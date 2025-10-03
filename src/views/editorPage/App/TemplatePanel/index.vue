@@ -1,60 +1,92 @@
 <template>
-  <UTabs :items="tabs" variant="link" class="h-full" :ui="{ content: 'h-full bg-gray-100' }">
-    <template #list-trailing class="bg-red-300">
-      <div class="flex w-full justify-end gap-x-2">
-        <DownloadJson />
-        <ImportJson />
+  <div class="h-full">
+    <TabGroup as="div" class="h-full">
+      <div class="bg-white border-b border-gray-200 px-4 py-3">
+        <div class="flex items-center justify-between">
+          <TabList class="flex space-x-8">
+            <Tab v-for="tab in tabs" :key="tab.slot" v-slot="{ selected }" as="template">
+              <button
+                :class="[
+                  'flex items-center space-x-2 py-2 px-1 border-b-2 font-medium text-sm',
+                  selected
+                    ? 'border-blue-500 text-blue-600'
+                    : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+                ]"
+              >
+                <span :class="tab.icon" class="w-5 h-5"></span>
+                <span class="capitalize">{{ tab.slot }}</span>
+              </button>
+            </Tab>
+          </TabList>
+          
+          <div class="flex items-center gap-x-2">
+            <DownloadJson />
+            <ImportJson />
 
-        <UButtonGroup>
-          <UTooltip text="Desktop view">
-            <UButton
-              :variant="inspectorDrawer.selectedScreenSize === 'desktop' ? 'solid' : 'outline'"
-              color="neutral"
-              icon="material-symbols:desktop-windows-outline"
-              @click="handleScreenSizeChange('desktop')"
-              class="cursor-pointer w-10 justify-center"
-            />
-          </UTooltip>
-          <UTooltip text="Mobile view">
-            <UButton
-              :variant="inspectorDrawer.selectedScreenSize === 'mobile' ? 'solid' : 'outline'"
-              color="neutral"
-              icon="material-symbols:phone-iphone-outline"
-              @click="handleScreenSizeChange('mobile')"
-              class="cursor-pointer w-10 justify-center"
-            />
-          </UTooltip>
-        </UButtonGroup>
+            <div class="flex border border-gray-300 rounded-md overflow-hidden">
+              <button
+                :class="[
+                  'px-3 py-2 text-sm font-medium',
+                  inspectorDrawer.selectedScreenSize === 'desktop'
+                    ? 'bg-blue-500 text-white'
+                    : 'bg-white text-gray-700 hover:bg-gray-50'
+                ]"
+                @click="handleScreenSizeChange('desktop')"
+                title="Desktop view"
+              >
+                <span class="material-symbols-outlined text-base">desktop_windows</span>
+              </button>
+              <button
+                :class="[
+                  'px-3 py-2 text-sm font-medium border-l border-gray-300',
+                  inspectorDrawer.selectedScreenSize === 'mobile'
+                    ? 'bg-blue-500 text-white'
+                    : 'bg-white text-gray-700 hover:bg-gray-50'
+                ]"
+                @click="handleScreenSizeChange('mobile')"
+                title="Mobile view"
+              >
+                <span class="material-symbols-outlined text-base">phone_iphone</span>
+              </button>
+            </div>
 
-        <UButton
-          :icon="inspectorDrawer.inspectorDrawerOpen ? 'material-symbols:last-page' : 'material-symbols:app-registration'"
-          variant="ghost"
-          color="neutral"
-          @click="inspectorDrawer.inspectorDrawerOpen = !inspectorDrawer.inspectorDrawerOpen"
-          class="cursor-pointer w-10 justify-center"
-        />
+            <button
+              @click="inspectorDrawer.inspectorDrawerOpen = !inspectorDrawer.inspectorDrawerOpen"
+              class="p-2 text-gray-500 hover:text-gray-700 hover:bg-gray-100 rounded-md"
+              :title="inspectorDrawer.inspectorDrawerOpen ? 'Hide inspector' : 'Show inspector'"
+            >
+              <span class="material-symbols-outlined text-base">
+                {{ inspectorDrawer.inspectorDrawerOpen ? 'last_page' : 'app_registration' }}
+              </span>
+            </button>
+          </div>
+        </div>
       </div>
-    </template>
-    <template #editor>
-      <div :style="mainBoxStyle">
-        <EditorBlock id="root" />
-      </div>
-    </template>
-    <template #preview>
-      <div :style="mainBoxStyle">
-        <Reader :document="inspectorDrawer.document" root-block-id="root" />
-      </div>
-    </template>
-    <template #html>
-      <HtmlPanel />
-    </template>
-    <template #json>
-      <JsonPanel />
-    </template>
-  </UTabs>
+
+      <TabPanels class="h-full bg-gray-100">
+        <TabPanel class="h-full">
+          <div :style="mainBoxStyle">
+            <EditorBlock id="root" />
+          </div>
+        </TabPanel>
+        <TabPanel class="h-full">
+          <div :style="mainBoxStyle">
+            <Reader :document="inspectorDrawer.document" root-block-id="root" />
+          </div>
+        </TabPanel>
+        <TabPanel class="h-full">
+          <HtmlPanel />
+        </TabPanel>
+        <TabPanel class="h-full">
+          <JsonPanel />
+        </TabPanel>
+      </TabPanels>
+    </TabGroup>
+  </div>
 </template>
 
 <script setup lang="ts">
+import { TabGroup, TabList, Tab, TabPanels, TabPanel } from '@headlessui/vue'
 import EditorBlock from '../../documents/editor/EditorBlock.vue'
 import { computed } from 'vue'
 import HtmlPanel from './HtmlPanel.vue'
@@ -63,29 +95,25 @@ import ImportJson from './ImportJson/index.vue'
 import DownloadJson from './DownloadJson/index.vue'
 import { Reader } from '@flyhub/email-builder'
 import { useInspectorDrawer } from '../../documents/editor/editor.store'
-// FIXME: implement
-// import ShareButton from './ShareButton.vue'
-
-// FIXME: implement handleChangeSelectedScreenSize
 
 const inspectorDrawer = useInspectorDrawer()
 
 const tabs = [
   {
-    icon: 'material-symbols:edit-outline',
-    slot: 'editor' as const
+    icon: 'material-symbols-outlined',
+    slot: 'editor'
   },
   {
-    icon: 'material-symbols:preview-outline',
-    slot: 'preview' as const
+    icon: 'material-symbols-outlined',
+    slot: 'preview'
   },
   {
-    icon: 'material-symbols:code',
-    slot: 'html' as const
+    icon: 'material-symbols-outlined',
+    slot: 'html'
   },
   {
-    icon: 'material-symbols:data-object',
-    slot: 'json' as const
+    icon: 'material-symbols-outlined',
+    slot: 'json'
   }
 ]
 

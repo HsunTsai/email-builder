@@ -1,6 +1,6 @@
 <template>
   <div class="space-y-2">
-    <UFormField :label="label" />
+    <label class="block text-sm font-medium text-gray-700">{{ label }}</label>
 
     <RawSliderInput
       icon-label="material-symbols:align-vertical-top"

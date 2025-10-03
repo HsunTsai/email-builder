@@ -1,5 +1,7 @@
 <template>
-  <UAlert v-if="!block" type="warning" title="Block not found" />
+  <div v-if="!block" class="bg-yellow-50 border border-yellow-200 rounded-md p-3">
+    <p class="text-sm text-yellow-800">⚠️ Block not found</p>
+  </div>
   <div v-else class="h-full">
     <BuildBlockComponent :blocks="EDITOR_DICTIONARY" v-bind="block"  />
   </div>

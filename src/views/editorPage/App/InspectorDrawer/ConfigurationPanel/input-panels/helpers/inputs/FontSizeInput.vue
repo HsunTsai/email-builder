@@ -1,5 +1,6 @@
 <template>
-  <UFormField :label="label">
+  <div class="space-y-2">
+    <label class="block text-sm font-medium text-gray-700">{{ label }}</label>
     <RawSliderInput
       icon-label="material-symbols:text-fields"
       :model-value="modelValue"
@@ -9,7 +10,7 @@
       :max="48"
       @update:model-value="$emit('change', $event)"
     />
-  </UFormField>
+  </div>
 </template>
 
 <script setup lang="ts">
