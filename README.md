@@ -24,7 +24,7 @@
 pnpm install
 
 # 啟動開發伺服器
-pnpm dev
+pnpm start
 
 # 建構專案
 pnpm build
