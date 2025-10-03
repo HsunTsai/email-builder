@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomePage from '../views/HomePage.vue'
-import EditorPage from '../views/EditorPage.vue'
+// import EditorPage from '../views/EditorPage.vue'
+import EditorPage from '../views/editorPage/EditorPage.vue'
 import TemplatesPage from '../views/TemplatesPage.vue'
 
 // 從環境變數獲取 base URL

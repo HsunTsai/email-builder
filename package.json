@@ -12,18 +12,27 @@
     "docker:run": "docker run -d -p 8080:80 --name email-builder email-builder"
   },
   "dependencies": {
+    "@flyhub/email-builder": "0.0.5",
+    "@headlessui/vue": "^1.7.23",
+    "@heroicons/vue": "^2.2.0",
+    "@nuxt/ui": "3.1.0",
     "@usewaypoint/email-builder": "0.0.8",
-    "vue": "3.2.13",
-    "vue-router": "^4.5.1"
+    "@vitejs/plugin-vue": "5.2.3",
+    "@vitejs/plugin-vue-jsx": "4.1.2",
+    "highlight.js": "11.11.1",
+    "pinia": "3.0.3",
+    "prettier": "3.5.3",
+    "vue": "3.5.22",
+    "vue-router": "4.5.1"
   },
   "devDependencies": {
-    "@tailwindcss/postcss": "^4.1.14",
+    "@tailwindcss/postcss": "4.1.14",
     "@vitejs/plugin-vue": "4.0.0",
-    "autoprefixer": "^10.4.21",
+    "autoprefixer": "10.4.21",
     "eslint": "8.0.0",
     "eslint-plugin-vue": "9.0.0",
-    "postcss": "^8.5.6",
-    "tailwindcss": "^4.1.14",
+    "postcss": "8.5.6",
+    "tailwindcss": "4.1.14",
     "vite": "4.0.0"
   },
   "browserslist": [
