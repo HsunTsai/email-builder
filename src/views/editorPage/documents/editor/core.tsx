@@ -25,73 +25,73 @@ import EditorBlockWrapper from "../blocks/helpers/block-wrappers/EditorBlockWrap
 export const EDITOR_DICTIONARY = buildBlockConfigurationDictionary({
   Avatar: {
     schema: AvatarPropsSchema,
-    Component: (props: { [x: string]: any }) =>
+    Component: (props) =>
       h(
         EditorBlockWrapper,
         {},
         {
           default: () => h(Avatar, props),
         }
-      ) as any,
+      ),
   },
   Button: {
     schema: ButtonPropsSchema,
-    Component: (props: { [x: string]: any }) =>
+    Component: (props) =>
       h(
         EditorBlockWrapper,
         {},
         {
           default: () => h(Button, props),
         }
-      ) as any,
+      ),
   },
   Container: {
-    schema: ContainerPropsSchema as any,
-    Component: (props: { [x: string]: any }) =>
+    schema: ContainerPropsSchema,
+    Component: (props) =>
       h(
         EditorBlockWrapper,
         {},
         {
           default: () => h(ContainerEditor, props),
         }
-      ) as any,
+      ),
   },
   ColumnsContainer: {
-    schema: ColumnsContainerPropsSchema as any,
-    Component: (props: { [x: string]: any }) =>
+    schema: ColumnsContainerPropsSchema,
+    Component: (props: any) =>
       h(
         EditorBlockWrapper,
         {},
         {
           default: () => h(ColumnsContainerEditor, props),
         }
-      ) as any,
+      ),
   },
   Heading: {
     schema: HeadingPropsSchema,
-    Component: (props: { [x: string]: any }) =>
+    Component: (props) =>
       h(
         EditorBlockWrapper,
         {},
         {
           default: () => h(Heading, props),
         }
-      ) as any,
+      ),
   },
   Html: {
     schema: HtmlPropsSchema,
-    Component: (props: { [x: string]: any }) =>
+    Component: (props) =>
       h(
         EditorBlockWrapper,
         {},
         {
           default: () => h(Html, props),
         }
-      ) as any,
+      ),
   },
   Image: {
     schema: ImagePropsSchema,
-    Component: (data: { [x: string]: any }) => {
+    Component: (data) => {
       const props = {
         ...data,
         props: {
@@ -107,47 +107,47 @@ export const EDITOR_DICTIONARY = buildBlockConfigurationDictionary({
         {
           default: () => h(Image, props),
         }
-      ) as any;
+      );
     },
   },
   Text: {
     schema: TextPropsSchema,
-    Component: (props: { [x: string]: any }) =>
+    Component: (props) =>
       h(
         EditorBlockWrapper,
         {},
         {
           default: () => h(Text, props),
         }
-      ) as any,
+      ),
   },
   EmailLayout: {
-    schema: EmailLayoutPropsSchema as any,
-    Component: (p: { [x: string]: any }) => h(EmailLayoutEditor, p) as any,
+    schema: EmailLayoutPropsSchema,
+    Component: (p: any) => h(EmailLayoutEditor, p),
   },
   Spacer: {
     schema: SpacerPropsSchema,
-    Component: (props: { [x: string]: any }) =>
+    Component: (props) =>
       h(
         EditorBlockWrapper,
         {},
         {
           default: () => h(Spacer, props),
         }
-      ) as any,
+      ),
   },
   Divider: {
     schema: DividerPropsSchema,
-    Component: (props: { [x: string]: any }) =>
+    Component: (props) =>
       h(
         EditorBlockWrapper,
         {},
         {
           default: () => h(Divider, props),
         }
-      ) as any,
+      ),
   },
-}) as any;
+});
 
 export const EditorBlockSchema =
   buildBlockConfigurationSchema(EDITOR_DICTIONARY);

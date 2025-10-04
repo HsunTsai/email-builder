@@ -1,9 +1,13 @@
 <template>
-  <button
-    class="flex items-center justify-center h-12 w-full bg-black/[0.08] cursor-pointer hover:bg-black/[0.12]"
-  >
-    <span class="bg-blue-600 w-5 h-5 flex items-center justify-center rounded-full">
-      <span class="material-symbols-outlined text-sm">add</span>
-    </span>
-  </button>
+  <ElButton class="flex w-full">
+    <div class="flex gap-1 items-center">
+      <Icon icon="mingcute:add-line" />
+      <span>Add</span>
+    </div>
+  </ElButton>
 </template>
+
+<script setup lang="ts">
+import { Icon } from "@iconify/vue";
+import { ElButton } from "element-plus";
+</script>

@@ -1,43 +1,33 @@
 <template>
-  <Popover class="relative">
-    <PopoverButton as="template">
+  <ElPopover
+    placement="bottom"
+    :width="300"
+    trigger="click"
+    v-model:visible="visible"
+  >
+    <template #reference>
       <slot />
-    </PopoverButton>
+    </template>
 
-    <Transition
-      enter-active-class="transition duration-200 ease-out"
-      enter-from-class="translate-y-1 opacity-0"
-      enter-to-class="translate-y-0 opacity-100"
-      leave-active-class="transition duration-150 ease-in"
-      leave-from-class="translate-y-0 opacity-100"
-      leave-to-class="translate-y-1 opacity-0"
-    >
-      <PopoverPanel class="absolute z-10 mt-2 transform">
-        <div
-          class="overflow-hidden rounded-lg shadow-lg ring-1 ring-black ring-opacity-5"
-        >
-          <div class="relative grid grid-cols-4 gap-2 bg-white p-4">
-            <BlockButton
-              v-for="item in BUTTONS"
-              :key="item.label"
-              :label="item.label"
-              :icon="item.icon"
-              @click="handleClick(item)"
-            />
-          </div>
-        </div>
-      </PopoverPanel>
-    </Transition>
-  </Popover>
+    <div class="relative grid grid-cols-4 gap-4" v-bind="$attrs">
+      <BlockButton
+        v-for="item in BUTTONS"
+        :key="item.label"
+        :label="item.label"
+        :icon="item.icon"
+        @click="handleClick(item)"
+      />
+    </div>
+  </ElPopover>
 </template>
 
 <script setup lang="ts">
-import { Popover, PopoverButton, PopoverPanel } from "@headlessui/vue";
+import { ElPopover } from "element-plus";
 import type { TEditorBlock } from "../../editor/core";
 import { BUTTONS } from "./buttons";
 import BlockButton from "./BlockButton.vue";
 
-const open = ref(false);
+const visible = ref(false);
 
 const emit = defineEmits<{
   (e: "select", args: TEditorBlock): void;
@@ -49,11 +39,13 @@ const emit = defineEmits<{
 function handleClick(item: (typeof BUTTONS)[number]) {
   const block = item.block();
   emit("select", block);
+  visible.value = false;
+  emit("open", visible.value);
 }
 
 /** Watch */
 
-watch(open, () => {
-  emit("open", open.value);
+watch(visible, () => {
+  emit("open", visible.value);
 });
 </script>

@@ -13,6 +13,7 @@
     "docker:run": "docker run -d -p 8080:80 --name email-builder email-builder"
   },
   "dependencies": {
+    "@element-plus/icons-vue": "^2.3.2",
     "@flyhub/email-block-avatar": "^0.0.6",
     "@flyhub/email-block-button": "^0.0.4",
     "@flyhub/email-block-columns-container": "^0.0.4",
@@ -28,9 +29,11 @@
     "@flyhub/email-document-core": "^0.0.2",
     "@headlessui/vue": "^1.7.23",
     "@heroicons/vue": "^2.2.0",
+    "@iconify/vue": "^5.0.0",
     "@usewaypoint/email-builder": "0.0.8",
     "@vitejs/plugin-vue": "5.2.3",
     "@vitejs/plugin-vue-jsx": "4.1.2",
+    "element-plus": "^2.11.4",
     "highlight.js": "11.11.1",
     "pinia": "3.0.3",
     "prettier": "3.5.3",

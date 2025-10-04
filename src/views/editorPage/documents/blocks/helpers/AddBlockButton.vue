@@ -7,12 +7,12 @@
       width: '100%',
     }"
     @mouseenter="visible = true"
-    @mouseleave="visible = false"
   >
     <BlocksMenu
       v-if="placeholder || visible || open"
       @select="$emit('select', $event)"
       @update:open="open = $event"
+      @mouseleave="visible = false"
     >
       <component :is="buttonComponent" />
     </BlocksMenu>
@@ -34,12 +34,10 @@ defineEmits<{
 }>();
 
 /** Refs */
-
 const visible = ref(false);
 const open = ref(false);
 
 /** Computed */
-
 const buttonComponent = computed(() => {
   if (props.placeholder) {
     return PlaceholderButton;

@@ -7,10 +7,8 @@ const inspectorDrawer = useInspectorDrawer();
 </script>
 
 <template>
-  <EditorInspectorDrawer />
-
   <div
-    class="transition-[margin-right] duration-200 h-full"
+    class="transition-[margin-right] duration-200"
     :style="{
       marginRight: inspectorDrawer.inspectorDrawerOpen
         ? `${inspectorDrawer.INSPECTOR_DRAWER_WIDTH}px`
@@ -19,4 +17,5 @@ const inspectorDrawer = useInspectorDrawer();
   >
     <TemplatePanel />
   </div>
+  <EditorInspectorDrawer />
 </template>

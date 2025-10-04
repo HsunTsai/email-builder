@@ -1,5 +1,5 @@
 <template>
-  <div id="app" class="min-h-screen bg-gray-50">
+  <div class="flex flex-col">
     <nav
       v-if="showNavigation"
       class="bg-white shadow-sm border-b border-gray-200 sticky top-0 z-50"
@@ -106,9 +106,7 @@
       </div>
     </nav>
 
-    <main class="flex-1">
-      <router-view />
-    </main>
+    <router-view />
   </div>
 </template>
 

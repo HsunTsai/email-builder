@@ -24,7 +24,7 @@ export const useInspectorDrawer = defineStore("inspectorDrawer", () => {
   const selectedMainTab = ref<TValue["selectedMainTab"]>("editor");
   const selectedScreenSize = ref<TValue["selectedScreenSize"]>("desktop");
   const inspectorDrawerOpen = ref<TValue["inspectorDrawerOpen"]>(false);
-  const INSPECTOR_DRAWER_WIDTH = 335;
+  const INSPECTOR_DRAWER_WIDTH = 300;
 
   function setSelectedBlockId(blockId: TValue["selectedBlockId"]) {
     const tab = blockId === null ? "styles" : "block-configuration";

@@ -15,44 +15,23 @@
         width: 'var(--drawer-width)',
       }"
     >
-      <TabGroup>
-        <div class="border-b border-gray-200">
-          <TabList class="flex space-x-8 px-4">
-            <Tab
-              v-for="tab in tabs"
-              :key="tab.slot"
-              v-slot="{ selected }"
-              as="template"
-            >
-              <button
-                :class="[
-                  'py-2 px-1 border-b-2 font-medium text-sm',
-                  selected
-                    ? 'border-blue-500 text-blue-600'
-                    : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300',
-                ]"
-              >
-                {{ tab.label }}
-              </button>
-            </Tab>
-          </TabList>
-        </div>
-
-        <TabPanels class="p-4">
-          <TabPanel>
-            <StylesPanel />
-          </TabPanel>
-          <TabPanel>
-            <ConfigurationPanel />
-          </TabPanel>
-        </TabPanels>
-      </TabGroup>
+      <el-tabs v-model="activeTab" class="h-full">
+        <el-tab-pane
+          v-for="tab in tabs"
+          :key="tab.slot"
+          :label="tab.label"
+          :name="tab.slot"
+          class="p-4"
+        >
+          <StylesPanel v-if="tab.slot === 'styles'" />
+          <ConfigurationPanel v-else-if="tab.slot === 'block-configuration'" />
+        </el-tab-pane>
+      </el-tabs>
     </div>
   </Transition>
 </template>
 
 <script setup lang="ts">
-import { TabGroup, TabList, Tab, TabPanels, TabPanel } from "@headlessui/vue";
 import { useInspectorDrawer } from "../../documents/editor/editor.store";
 import StylesPanel from "./stylesPanel/StylesPanel.vue";
 import ConfigurationPanel from "./ConfigurationPanel/ConfigurationPanel.vue";

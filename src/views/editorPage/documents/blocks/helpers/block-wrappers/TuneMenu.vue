@@ -1,27 +1,15 @@
 <template>
   <div :style="sx" @click.stop>
-    <div style="display: flex; gap: 8px; flex-direction: column">
-      <button
-        class="p-2 bg-gray-100 hover:bg-gray-200 rounded transition-colors"
-        @click="handleMoveClick('up')"
-        title="Move up"
-      >
-        <span class="material-symbols-outlined text-xl">arrow_upward</span>
-      </button>
-      <button
-        class="p-2 bg-gray-100 hover:bg-gray-200 rounded transition-colors"
-        @click="handleMoveClick('down')"
-        title="Move down"
-      >
-        <span class="material-symbols-outlined text-xl">arrow_downward</span>
-      </button>
-      <button
-        class="p-2 bg-red-100 hover:bg-red-200 text-red-600 rounded transition-colors"
-        @click="handleDeleteClick"
-        title="Delete"
-      >
-        <span class="material-symbols-outlined text-xl">delete</span>
-      </button>
+    <div class="flex flex-col items-center gap-2">
+      <ElButton circle @click="handleMoveClick('up')" title="Move up">
+        <Icon icon="mingcute:arrow-up-line" />
+      </ElButton>
+      <ElButton circle @click="handleMoveClick('down')" title="Move down">
+        <Icon icon="mingcute:arrow-down-line" />
+      </ElButton>
+      <ElButton circle @click="handleDeleteClick" title="Delete">
+        <Icon icon="mingcute:delete-2-line" />
+      </ElButton>
     </div>
   </div>
 </template>
@@ -31,15 +19,17 @@ import { HTMLAttributes } from "vue";
 import type { ColumnsContainerProps } from "../../ColumnsContainer/ColumnsContainerPropsSchema";
 import type { TEditorBlock } from "../../../editor/core";
 import { useInspectorDrawer } from "../../../editor/editor.store";
+import { Icon } from "@iconify/vue";
+import { ElButton } from "element-plus";
 
 const sx: HTMLAttributes["style"] = {
   backgroundColor: "white",
   position: "absolute",
   top: 0,
   left: "-56px",
-  borderRadius: "256px",
-  padding: "8px 4px",
+  borderRadius: "45px",
   zIndex: 10,
+  padding: "12px 8px",
   boxShadow:
     "rgba(33, 36, 67, 0.04) 0px 10px 20px, rgba(33, 36, 67, 0.04) 0px 2px 6px, rgba(33, 36, 67, 0.04) 0px 0px 1px",
 };
