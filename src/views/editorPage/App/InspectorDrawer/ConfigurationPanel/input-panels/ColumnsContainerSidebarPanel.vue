@@ -64,6 +64,7 @@
 </template>
 
 <script setup lang="ts">
+import * as Zod from "zod";
 import BaseSidebarPanel from "./helpers/BaseSidebarPanel.vue";
 import RadioGroupInput from "./helpers/inputs/RadioGroupInput.vue";
 import ColumnWidthsInput from "./helpers/inputs/ColumnWidthsInput.vue";

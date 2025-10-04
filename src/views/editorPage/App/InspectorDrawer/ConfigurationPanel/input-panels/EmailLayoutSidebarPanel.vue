@@ -39,6 +39,7 @@
 </template>
 
 <script setup lang="ts">
+import * as Zod from "zod";
 import type { EmailLayoutProps } from "@flyhub/email-builder/blocks/EmailLayout";
 import { EmailLayoutPropsSchema } from "@flyhub/email-builder/blocks/EmailLayout";
 import BaseSidebarPanel from "./helpers/BaseSidebarPanel.vue";
@@ -46,7 +47,6 @@ import NullableFontFamily from "./helpers/inputs/NullableFontFamily.vue";
 import ColorInput from "./helpers/inputs/ColorInput/ColorInput.vue";
 import NullableColorInput from "./helpers/inputs/ColorInput/NullableColorInput.vue";
 import SliderInput from "./helpers/inputs/SliderInput.vue";
-import * as Zod from "zod";
 
 type EmailLayoutSidebarFieldsProps = {
   data: Omit<EmailLayoutProps, "document">;

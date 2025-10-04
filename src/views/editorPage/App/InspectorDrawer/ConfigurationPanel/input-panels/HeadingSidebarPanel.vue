@@ -14,7 +14,7 @@
             },
           })
         "
-        class="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:border-blue-500 focus:ring-blue-500 resize-none"
+        class="w-full border border-gray-300 rounded px-3 py-2 text-sm focus:border-blue-500 focus:ring-blue-500 resize-none"
         placeholder="Enter heading text..."
       />
     </div>
@@ -46,6 +46,7 @@
 </template>
 
 <script setup lang="ts">
+import * as Zod from "zod";
 import BaseSidebarPanel from "./helpers/BaseSidebarPanel.vue";
 import MultiStylePropertyPanel from "./helpers/style-inputs/MultiStylePropertyPanel.vue";
 import RadioGroupInput from "./helpers/inputs/RadioGroupInput.vue";

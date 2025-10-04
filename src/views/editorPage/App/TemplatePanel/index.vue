@@ -28,7 +28,7 @@
             <DownloadJson />
             <ImportJson />
 
-            <div class="flex border border-gray-300 rounded-md overflow-hidden">
+            <div class="flex border border-gray-300 rounded overflow-hidden">
               <button
                 :class="[
                   'px-3 py-2 text-sm font-medium',
@@ -64,7 +64,7 @@
                 inspectorDrawer.inspectorDrawerOpen =
                   !inspectorDrawer.inspectorDrawerOpen
               "
-              class="p-2 text-gray-500 hover:text-gray-700 hover:bg-gray-100 rounded-md"
+              class="p-2 text-gray-500 hover:text-gray-700 hover:bg-gray-100 rounded"
               :title="
                 inspectorDrawer.inspectorDrawerOpen
                   ? 'Hide inspector'

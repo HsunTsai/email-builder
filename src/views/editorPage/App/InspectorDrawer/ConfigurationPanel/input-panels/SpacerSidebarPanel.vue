@@ -16,6 +16,7 @@
 </template>
 
 <script setup lang="ts">
+import * as Zod from "zod";
 import BaseSidebarPanel from "./helpers/BaseSidebarPanel.vue";
 import SliderInput from "./helpers/inputs/SliderInput.vue";
 import type { SpacerProps } from "@flyhub/email-block-spacer";

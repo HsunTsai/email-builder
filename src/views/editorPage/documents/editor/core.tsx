@@ -31,7 +31,7 @@ export const EDITOR_DICTIONARY = buildBlockConfigurationDictionary({
         {},
         {
           default: () => h(Avatar, props),
-        },
+        }
       ) as any,
   },
   Button: {
@@ -42,7 +42,7 @@ export const EDITOR_DICTIONARY = buildBlockConfigurationDictionary({
         {},
         {
           default: () => h(Button, props),
-        },
+        }
       ) as any,
   },
   Container: {
@@ -53,7 +53,7 @@ export const EDITOR_DICTIONARY = buildBlockConfigurationDictionary({
         {},
         {
           default: () => h(ContainerEditor, props),
-        },
+        }
       ) as any,
   },
   ColumnsContainer: {
@@ -64,7 +64,7 @@ export const EDITOR_DICTIONARY = buildBlockConfigurationDictionary({
         {},
         {
           default: () => h(ColumnsContainerEditor, props),
-        },
+        }
       ) as any,
   },
   Heading: {
@@ -75,7 +75,7 @@ export const EDITOR_DICTIONARY = buildBlockConfigurationDictionary({
         {},
         {
           default: () => h(Heading, props),
-        },
+        }
       ) as any,
   },
   Html: {
@@ -86,7 +86,7 @@ export const EDITOR_DICTIONARY = buildBlockConfigurationDictionary({
         {},
         {
           default: () => h(Html, props),
-        },
+        }
       ) as any,
   },
   Image: {
@@ -106,7 +106,7 @@ export const EDITOR_DICTIONARY = buildBlockConfigurationDictionary({
         {},
         {
           default: () => h(Image, props),
-        },
+        }
       ) as any;
     },
   },
@@ -118,7 +118,7 @@ export const EDITOR_DICTIONARY = buildBlockConfigurationDictionary({
         {},
         {
           default: () => h(Text, props),
-        },
+        }
       ) as any,
   },
   EmailLayout: {
@@ -133,7 +133,7 @@ export const EDITOR_DICTIONARY = buildBlockConfigurationDictionary({
         {},
         {
           default: () => h(Spacer, props),
-        },
+        }
       ) as any,
   },
   Divider: {
@@ -144,7 +144,7 @@ export const EDITOR_DICTIONARY = buildBlockConfigurationDictionary({
         {},
         {
           default: () => h(Divider, props),
-        },
+        }
       ) as any,
   },
 }) as any;
@@ -153,7 +153,7 @@ export const EditorBlockSchema =
   buildBlockConfigurationSchema(EDITOR_DICTIONARY);
 export const EditorConfigurationSchema = z.record(
   z.string(),
-  EditorBlockSchema,
+  EditorBlockSchema
 );
 
 export type TEditorBlock = z.infer<typeof EditorBlockSchema>;

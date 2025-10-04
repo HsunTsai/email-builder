@@ -1,13 +1,13 @@
 <template>
   <div
     v-if="!inspectorDrawer.selectedBlockId"
-    class="bg-yellow-50 border border-yellow-200 rounded-md p-3"
+    class="bg-yellow-50 border border-yellow-200 rounded p-3"
   >
     <p class="text-sm text-yellow-800">⚠️ Click on a block to inspect.</p>
   </div>
   <div
     v-else-if="!block"
-    class="bg-yellow-50 border border-yellow-200 rounded-md p-3"
+    class="bg-yellow-50 border border-yellow-200 rounded p-3"
   >
     <p class="text-sm text-yellow-800">
       ⚠️ Block with id {{ inspectorDrawer.selectedBlockId }} not found. Click on

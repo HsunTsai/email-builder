@@ -38,7 +38,15 @@
             },
           })
         "
-        class="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:border-blue-500 focus:ring-blue-500"
+        class="w-full border border-gray-300 rounded px-3 py-2 text-sm focus:border-blue-500 focus:ring-blue-500"
+        placeholder="https://example.com/image.jpg"
+      />
+    </div>
+    <div class="space-y-2">
+      <label class="block text-sm font-medium text-gray-700">Alt text</label>
+                })
+        "
+        class="w-full border border-gray-300 rounded px-3 py-2 text-sm focus:border-blue-500 focus:ring-blue-500"
         placeholder="https://example.com/image.jpg"
       />
     </div>
@@ -56,8 +64,8 @@
             },
           })
         "
-        class="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:border-blue-500 focus:ring-blue-500"
-        placeholder="Image description"
+        class="w-full border border-gray-300 rounded px-3 py-2 text-sm focus:border-blue-500 focus:ring-blue-500"
+        placeholder="User avatar"
       />
     </div>
     <MultiStylePropertyPanel

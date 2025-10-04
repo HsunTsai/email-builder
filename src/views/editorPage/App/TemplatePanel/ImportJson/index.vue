@@ -1,7 +1,7 @@
 <template>
   <button
     @click="open = true"
-    class="p-2 text-gray-500 hover:text-gray-700 hover:bg-gray-100 rounded-md"
+    class="p-2 text-gray-500 hover:text-gray-700 hover:bg-gray-100 rounded"
     title="Import JSON"
   >
     <span class="material-symbols-outlined text-base">upload</span>
@@ -56,7 +56,7 @@
 
                 <div
                   v-if="error"
-                  class="bg-red-50 border border-red-200 rounded-md p-3"
+                  class="bg-red-50 border border-red-200 rounded p-3"
                 >
                   <p class="text-sm text-red-800">{{ error }}</p>
                 </div>
@@ -85,7 +85,7 @@
               <div class="mt-6 flex justify-end space-x-3">
                 <button
                   type="button"
-                  class="inline-flex justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                  class="inline-flex justify-center rounded border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
                   @click="open = false"
                 >
                   Cancel
@@ -94,7 +94,7 @@
                   type="button"
                   :disabled="error !== null"
                   :class="[
-                    'inline-flex justify-center rounded-md border border-transparent px-4 py-2 text-sm font-medium text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2',
+                    'inline-flex justify-center rounded border border-transparent px-4 py-2 text-sm font-medium text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2',
                     error
                       ? 'bg-gray-400 cursor-not-allowed'
                       : 'bg-blue-600 hover:bg-blue-700',
@@ -138,12 +138,12 @@ function handleChange() {
 }
 
 function handleSubmit() {
-  const { error: err, data } = validateJsonStringValue(value.value);
-  error.value = err ?? null;
+  // const { error: err, data } = validateJsonStringValue(value.value);
+  // error.value = err ?? null;
 
-  if (!data) return;
+  // if (!data) return;
 
-  inspectorDrawer.resetDocument(data);
+  inspectorDrawer.resetDocument(JSON.parse(value.value));
   open.value = false;
 }
 </script>

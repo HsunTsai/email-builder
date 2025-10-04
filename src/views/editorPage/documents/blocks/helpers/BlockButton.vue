@@ -1,9 +1,9 @@
 <template>
   <button
     @click="$emit('click')"
-    class="flex flex-col items-center bg-transparent cursor-pointer hover:bg-white/10 rounded-none py-3 border-none"
+    class="flex flex-col items-center bg-transparent cursor-pointer hover:bg-white/10 py-3"
   >
-    <div class="p-2 bg-gray-200 rounded-md mb-2">
+    <div class="p-2 bg-gray-200 rounded mb-2">
       <span :class="icon" class="text-xl text-gray-700"></span>
     </div>
     <span class="text-sm">{{ label }}</span>

@@ -1,13 +1,13 @@
 <template>
   <div
     v-if="!block"
-    class="bg-yellow-50 border border-yellow-200 rounded-md p-3"
+    class="bg-yellow-50 border border-yellow-200 rounded p-3"
   >
     <p class="text-sm text-yellow-800">⚠️ Block not found</p>
   </div>
   <div
     v-else-if="block.type !== 'EmailLayout'"
-    class="bg-yellow-50 border border-yellow-200 rounded-md p-3"
+    class="bg-yellow-50 border border-yellow-200 rounded p-3"
   >
     <p class="text-sm text-yellow-800">
       ⚠️ Expected "root" element to be of type "EmailLayout"

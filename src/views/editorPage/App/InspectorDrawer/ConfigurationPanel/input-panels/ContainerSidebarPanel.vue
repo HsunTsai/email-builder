@@ -9,6 +9,7 @@
 </template>
 
 <script setup lang="ts">
+import * as Zod from "zod";
 import ContainerPropsSchema from "../../../../documents/blocks/Container/ContainerPropsSchema";
 import type { ContainerProps } from "../../../../documents/blocks/Container/ContainerPropsSchema";
 import MultiStylePropertyPanel from "./helpers/style-inputs/MultiStylePropertyPanel.vue";

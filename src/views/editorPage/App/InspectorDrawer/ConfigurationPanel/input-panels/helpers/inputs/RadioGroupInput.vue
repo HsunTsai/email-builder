@@ -1,7 +1,7 @@
 <template>
   <div class="space-y-2">
     <label class="block text-sm font-medium text-gray-700">{{ label }}</label>
-    <div class="flex border border-gray-300 rounded-md overflow-hidden">
+    <div class="flex border border-gray-300 rounded overflow-hidden">
       <button
         v-for="item in items"
         :key="item.value"

@@ -6,7 +6,7 @@
         <Popover v-slot="{ open }" class="relative">
           <PopoverButton
             :class="[
-              'flex items-center space-x-2 rounded-md border border-gray-300 bg-white px-3 py-2 text-sm shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2',
+              'flex items-center space-x-2 rounded border border-gray-300 bg-white px-3 py-2 text-sm shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2',
               open ? 'ring-2 ring-blue-500' : '',
             ]"
           >
@@ -30,7 +30,7 @@
               type="color"
               :value="value ?? '#000000'"
               @input="handleChange(($event.target as HTMLInputElement).value)"
-              class="w-32 h-32 border-none cursor-pointer"
+              class="w-32 h-32 cursor-pointer"
             />
           </PopoverPanel>
         </Popover>

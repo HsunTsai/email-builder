@@ -34,6 +34,7 @@
 </template>
 
 <script setup lang="ts">
+import * as Zod from "zod";
 import type { DividerProps } from "@flyhub/email-block-divider";
 import {
   DividerPropsDefaults,
