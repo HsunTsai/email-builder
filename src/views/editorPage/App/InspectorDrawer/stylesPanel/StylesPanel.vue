@@ -21,8 +21,8 @@
 </template>
 
 <script setup lang="ts">
-import { useInspectorDrawer } from "../../documents/editor/editor.store";
-import EmailLayoutSidebarPanel from "./ConfigurationPanel/input-panels/EmailLayoutSidebarPanel.vue";
+import { useInspectorDrawer } from "../../../documents/editor/editor.store";
+import EmailLayoutSidebarPanel from "../ConfigurationPanel/input-panels/EmailLayoutSidebarPanel.vue";
 import type { EmailLayoutProps } from "@flyhub/email-builder/blocks/EmailLayout";
 
 const inspectorDrawer = useInspectorDrawer();

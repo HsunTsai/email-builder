@@ -1,4 +1,4 @@
-import getConfiguration from "../../getConfiguration";
+import getConfiguration from "../../getConfiguration/getConfiguration";
 import type { TEditorConfiguration } from "./core";
 import { defineStore } from "pinia";
 

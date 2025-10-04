@@ -54,8 +54,8 @@
 <script setup lang="ts">
 import { TabGroup, TabList, Tab, TabPanels, TabPanel } from "@headlessui/vue";
 import { useInspectorDrawer } from "../../documents/editor/editor.store";
-import StylesPanel from "./StylesPanel.vue";
-import ConfigurationPanel from "./ConfigurationPanel/index.vue";
+import StylesPanel from "./stylesPanel/StylesPanel.vue";
+import ConfigurationPanel from "./ConfigurationPanel/ConfigurationPanel.vue";
 
 const INSPECTOR_DRAWER_WIDTH = 300;
 

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useInspectorDrawer } from "./documents/editor/editor.store";
-import TemplatePanel from "./App/TemplatePanel/index.vue";
-import EditorInspectorDrawer from "./App/InspectorDrawer/index.vue";
+import TemplatePanel from "./App/TemplatePanel/TemplatePanel.vue";
+import EditorInspectorDrawer from "./App/InspectorDrawer/InspectorDrawer.vue";
 
 const inspectorDrawer = useInspectorDrawer();
 </script>

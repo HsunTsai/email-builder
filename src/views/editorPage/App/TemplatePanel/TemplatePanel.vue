@@ -110,8 +110,8 @@ import { TabGroup, TabList, Tab, TabPanels, TabPanel } from "@headlessui/vue";
 import EditorBlock from "../../documents/editor/EditorBlock.vue";
 import HtmlPanel from "./HtmlPanel.vue";
 import JsonPanel from "./JsonPanel.vue";
-import ImportJson from "./ImportJson/index.vue";
-import DownloadJson from "./DownloadJson/index.vue";
+import ImportJson from "./ImportJson/ImportJson.vue";
+import DownloadJson from "./DownloadJson/DownloadJson.vue";
 import { Reader } from "@flyhub/email-builder";
 import { useInspectorDrawer } from "../../documents/editor/editor.store";
 
