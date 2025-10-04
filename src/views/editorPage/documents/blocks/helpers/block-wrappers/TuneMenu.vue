@@ -27,6 +27,7 @@
 </template>
 
 <script setup lang="ts">
+import { HTMLAttributes } from "vue";
 import type { ColumnsContainerProps } from "../../ColumnsContainer/ColumnsContainerPropsSchema";
 import type { TEditorBlock } from "../../../editor/core";
 import { useInspectorDrawer } from "../../../editor/editor.store";
